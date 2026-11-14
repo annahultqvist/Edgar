@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Edgar – Svenska grammatik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EEF3F6; --paper:#FFFFFF; --ink:#1D2B3A; --soft:#4A5A6B; --line:#D3DEE6; --field:#F7FAFC;
+  --ok:#2E8B57; --okt:#E3F4EA; --bad:#C0392B; --badt:#FBE3E0; --mid:#B7791F; --midt:#FDF1DC;
+  --his:#3566B8;--del:#8653B8;--arv:#B8661A;--dna:#2F8A5E;--epi:#B8467C;--gte:#13807A;--rep:#4A5A6B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161E26; --paper:#1F2933; --ink:#E9EFF4; --soft:#AAB8C5; --line:#33414E; --field:#18212A;
+    --ok:#5CC08F; --okt:#1D3A2C; --bad:#EE6E6E; --badt:#43262A; --mid:#E8B65A; --midt:#3D3220;
+    --his:#7FA6E8;--del:#B48BE3;--arv:#F0A452;--dna:#5CC08F;--epi:#EB86B6;--gte:#4FC4B8;--rep:#AAB8C5;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161E26; --paper:#1F2933; --ink:#E9EFF4; --soft:#AAB8C5; --line:#33414E; --field:#18212A;
+  --ok:#5CC08F; --okt:#1D3A2C; --bad:#EE6E6E; --badt:#43262A; --mid:#E8B65A; --midt:#3D3220;
+  --his:#7FA6E8;--del:#B48BE3;--arv:#F0A452;--dna:#5CC08F;--epi:#EB86B6;--gte:#4FC4B8;--rep:#AAB8C5;
+}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lexend",Verdana,"Segoe UI",sans-serif;font-size:1.1rem;line-height:1.7;letter-spacing:.01em}
+.wrap{max-width:48rem;margin:0 auto;padding:1.2rem 1rem 4rem}
+h1{font-size:2rem;line-height:1.2;margin:.4rem 0 .4rem}
+h2{font-size:1.4rem;line-height:1.3;margin:0 0 .5rem}
+h3{font-size:1.12rem;margin:1rem 0 .3rem}
+p{margin:.4rem 0 .8rem}
+a{color:inherit}
+.soft{color:var(--soft)}
+.small{font-size:.95rem}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn{font-size:1rem;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.45rem .9rem;cursor:pointer;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn.main{background:var(--c,#3566B8);border-color:var(--c,#3566B8);color:#fff;font-weight:500}
+.row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.count{color:var(--soft);font-size:.95rem;margin-left:auto}
+.topnav{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1rem}
+.topnav a{font-size:.95rem;text-decoration:none;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:.25rem .8rem}
+.topnav a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card{background:var(--paper);border-radius:14px;padding:1.1rem 1.2rem;margin:0 0 1.1rem;border:2px solid var(--line)}
+.card.k{border-left:10px solid var(--c)}
+.hero{border-left:10px solid var(--c);background:var(--paper);border-radius:14px;padding:1.2rem 1.3rem;margin-bottom:1.2rem}
+.hero .big{font-size:2.6rem;font-weight:700;line-height:1;color:var(--c)}
+.bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden;margin:.5rem 0}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:6px}
+.stat{display:flex;gap:1rem;flex-wrap:wrap;font-size:.95rem}
+.stat span b{font-size:1.1rem}
+.passlist{list-style:none;padding:0;margin:0}
+.passlist li{margin:.35rem 0}
+.passlist a{display:flex;gap:.7rem;align-items:center;text-decoration:none;padding:.5rem .7rem;border-radius:10px;background:var(--ct);border:2px solid transparent}
+.passlist a:hover{border-color:var(--c)}
+.passlist .num{flex:none;width:2.1rem;height:2.1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--c);color:#fff;font-weight:700}
+.passlist .done .num{background:var(--ok)}
+.passlist .meta{font-size:.9rem;color:var(--soft);display:block}
+.wk{margin:1.1rem 0 .2rem;font-weight:700}
+.step{background:var(--paper);border-radius:14px;padding:1rem 1.2rem;margin:0 0 1rem;border:2px solid var(--line);position:relative}
+.step>h2{display:flex;gap:.6rem;align-items:center;font-size:1.25rem}
+.step>h2 .sn{flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--c);color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.step.isdone>h2 .sn{background:var(--ok)}
+.stepdone{margin-left:auto;font-size:.9rem;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:.15rem .7rem;cursor:pointer;min-height:36px}
+.stepdone[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+.tip{background:var(--ct);border-radius:10px;padding:.6rem .9rem;margin:.6rem 0}
+textarea,input[type=text],input[type=number],select{font:inherit;font-size:1rem;width:100%;border:2px solid var(--line);border-radius:10px;padding:.5rem .7rem;background:var(--field);color:var(--ink)}
+textarea{min-height:5.5rem;resize:vertical;line-height:1.5}
+.qc{border-top:2px solid var(--line);padding:.8rem 0}
+.qc:first-of-type{border-top:0}
+.qc .qt{font-weight:500;margin:0 0 .4rem;display:flex;gap:.5rem;align-items:flex-start}
+.qc .qt .from{font-size:.8rem;font-weight:400;color:var(--soft);white-space:nowrap}
+.ans{background:var(--okt);border-radius:10px;padding:.6rem .9rem;margin:.5rem 0}
+.ans p{margin:.2rem 0 .4rem}
+.grade{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.4rem}
+.grade button{font-size:.95rem;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:.2rem .8rem;cursor:pointer;min-height:40px}
+.grade button.on.g0{background:var(--ok);border-color:var(--ok);color:#fff}
+.grade button.on.g1{background:var(--mid);border-color:var(--mid);color:#fff}
+.grade button.on.g2{background:var(--bad);border-color:var(--bad);color:#fff}
+.say{font-size:.9rem;border:2px solid var(--line);background:transparent;border-radius:999px;padding:.05rem .65rem;cursor:pointer;flex:none}
+.pts{list-style:none;padding:0;margin:.4rem 0}
+.pts li{display:flex;gap:.6rem;align-items:flex-start;padding:.35rem .5rem;border-radius:8px;margin:.2rem 0}
+.pts li.hit{background:var(--okt)}
+.pts li .mk{flex:none;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--soft);margin-top:.25rem;cursor:pointer;background:transparent;padding:0}
+.pts li.hit .mk{background:var(--ok);border-color:var(--ok)}
+.exl{display:flex;flex-wrap:wrap;gap:.5rem}
+.exl a{text-decoration:none;border:2px solid var(--c);border-radius:10px;padding:.4rem .8rem;background:var(--ct);font-size:1rem}
+.exl a.done{border-color:var(--ok)}
+.exl a.done::before{content:"✓ ";color:var(--ok);font-weight:700}
+/* exercises */
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .9rem}
+.tabs button{font-size:.95rem;border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:.3rem .8rem;cursor:pointer;min-height:40px}
+.tabs button[aria-pressed="true"]{background:var(--c,#3566B8);border-color:var(--c,#3566B8);color:#fff}
+.grp{width:100%;font-size:.88rem;color:var(--soft);margin:.3rem 0 -.1rem}
+.answer{display:flex;flex-wrap:wrap;gap:.4rem;min-height:3rem;padding:.5rem;border-radius:10px;border:2px dashed var(--line);margin:.6rem 0}
+.answer span{background:var(--c);color:#fff;border-radius:8px;padding:.2rem .7rem;line-height:1.4}
+.pool{display:flex;flex-wrap:wrap;gap:.5rem}
+.pool button{font-size:1rem;border:2px solid var(--line);background:var(--bg);border-radius:10px;padding:.45rem .8rem;cursor:pointer;min-height:44px;text-align:left;line-height:1.35}
+.pool button.wrong,.chip.wrong{border-color:var(--bad);animation:shake .3s}
+.pool button.right{background:var(--ok);border-color:var(--ok);color:#fff}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.msg{font-weight:500;min-height:1.6rem}
+.figscroll{overflow-x:auto;border-radius:10px;background:#fff;border:2px solid var(--line)}
+.fig{position:relative;width:100%;margin:0 auto}
+.fig img{display:block;width:100%;height:auto}
+.zone{position:absolute;border:2px dashed #E08A1E;border-radius:6px;background:rgba(255,248,235,.97);display:flex;align-items:center;justify-content:center;
+  font-size:12px;line-height:1.1;color:#1D2B3A;cursor:pointer;padding:0 3px;text-align:center;font-weight:600}
+.zone.ok{border:2px solid #2E8B57;background:#E3F4EA;color:#1D5E3A}
+.zone.shown{border:2px solid #7D8B99;background:#EEF1F4;color:#4A5A6B}
+.zone.no{border-color:#C0392B;background:#FBE3E0;animation:shake .3s}
+.picking .zone:not(.ok):not(.shown){background:rgba(232,240,252,.97);border-color:#3878B8}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0 .4rem}
+.chip{font-size:1rem;border:2px solid var(--c,#E08A1E);background:var(--paper);color:var(--ink);border-radius:10px;padding:.4rem .75rem;cursor:grab;min-height:44px;touch-action:none;user-select:none;-webkit-user-select:none;text-align:left;line-height:1.35}
+.chip.sel{background:var(--c,#E08A1E);color:#fff}
+.ghost{position:fixed;z-index:50;pointer-events:none;transform:translate(-50%,-60%);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem;margin:1rem 0 .4rem}
+.bucket{border:2px dashed var(--c);border-radius:12px;padding:.5rem;min-height:6rem;cursor:pointer;background:var(--ct)}
+.bucket h3{margin:0 0 .4rem;font-size:1rem;text-align:center}
+.bucket .in{font-size:.88rem;background:var(--ok);color:#fff;border-radius:8px;padding:.2rem .5rem;margin:.25rem 0;line-height:1.35}
+.bucket.no{border-color:var(--bad);animation:shake .3s}
+.picking2 .bucket{border-style:solid}
+/* punnett */
+.pun{display:grid;gap:4px;margin:.8rem 0;max-width:24rem}
+.pun div{border:2px solid var(--line);border-radius:8px;min-height:3rem;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1.05rem;background:var(--paper)}
+.pun .h{background:var(--ct);border-color:var(--c)}
+.pun .e{border-color:transparent;background:transparent}
+.pun .cell{cursor:pointer;border-style:dashed}
+.pun .cell.sel{border-color:#3878B8;border-style:solid;background:rgba(56,120,184,.12)}
+.pun .cell.ok{border-color:var(--ok);border-style:solid;background:var(--okt)}
+.pun .cell.no{border-color:var(--bad);animation:shake .3s}
+.par{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;font-size:1.05rem}
+.par b{font-size:1.2rem}
+/* codon */
+.dna{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.15rem;letter-spacing:.05em;word-break:break-word;background:var(--field);border-radius:8px;padding:.4rem .6rem;border:2px solid var(--line)}
+.dna mark{background:#F2D06B;color:#1D2B3A;border-radius:3px}
+.cods{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0}
+.cods label{display:flex;flex-direction:column;gap:.2rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1rem;align-items:flex-start}
+.cods select{width:auto;min-width:8.5rem;font-family:inherit}
+.cods select.ok{border-color:var(--ok);background:var(--okt)}
+.cods select.no{border-color:var(--bad);background:var(--badt)}
+.ctab{overflow-x:auto}
+.ctab table{border-collapse:collapse;font-size:.85rem;font-family:ui-monospace,Menlo,Consolas,monospace}
+.ctab td,.ctab th{border:1px solid var(--line);padding:.15rem .35rem;vertical-align:top;white-space:nowrap}
+.cmp{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;font-size:1rem}
+.cmp .lbl{color:var(--soft)}
+.aa{display:inline-block;border-radius:6px;padding:0 .3rem;margin:.1rem}
+.aa.diff{background:var(--badt);outline:2px solid var(--bad)}
+.letters{display:flex;flex-wrap:wrap;gap:.25rem;margin:.5rem 0}
+.letters button{min-width:2.2rem;min-height:2.4rem;border:2px solid var(--line);border-radius:6px;background:var(--paper);font-weight:700;cursor:pointer}
+.words{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.3rem;letter-spacing:.08em}
+/* pedigree */
+.ped{background:#fff;border:2px solid var(--line);border-radius:10px;overflow-x:auto}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem;color:var(--soft);margin:.4rem 0}
+/* canvas */
+.canv{border:2px solid var(--line);border-radius:10px;background:#fff;touch-action:none;display:block;width:100%;height:380px}
+.tools{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}
+.tools button{min-width:44px;min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--paper);cursor:pointer}
+.tools button[aria-pressed="true"]{border-color:var(--ink)}
+.kw{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
+.kw span{border-radius:999px;padding:.1rem .7rem;font-size:.92rem;border:2px solid var(--line)}
+.kw span.hit{background:var(--okt);border-color:var(--ok)}
+.kw span.miss{background:var(--midt);border-color:var(--mid)}
+/* begrepp */
+.term{border-left:6px solid var(--c);padding:.5rem .9rem;margin:.6rem 0;background:var(--ct);border-radius:0 10px 10px 0}
+.term h3{margin:0;display:flex;gap:.6rem;align-items:center}
+.term p{margin:.15rem 0}
+.term .exm{color:var(--soft)}
+.match{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:.6rem}
+.match>div{display:flex;flex-direction:column;gap:.5rem}
+.match button{font-size:1rem;text-align:left;border:2px solid var(--line);background:var(--bg);border-radius:10px;padding:.5rem .7rem;cursor:pointer;line-height:1.4}
+.match button.sel{border-color:#3878B8;background:rgba(56,120,184,.15)}
+.match button.done{border-color:var(--ok);background:var(--okt);cursor:default}
+.match button.wrong{border-color:var(--bad);animation:shake .3s}
+.exq{font-size:1.2rem;font-weight:500;padding:1rem;border-radius:12px;background:var(--ct);margin:.4rem 0 .8rem}
+.fcard{min-height:9rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-radius:14px;padding:1.2rem;margin:.6rem 0;cursor:pointer;border:3px solid var(--c);background:var(--ct);font-size:1.25rem;font-weight:500;width:100%;color:var(--ink)}
+.fcard small{display:block;font-size:.9rem;color:var(--soft);font-weight:400;margin-top:.5rem}
+.note{border:2px dashed var(--line);border-radius:12px;padding:.6rem .9rem;font-size:.98rem;color:var(--soft)}
+.sync{font-size:.85rem;color:var(--soft)}
+footer{color:var(--soft);font-size:.92rem;margin-top:2rem}
+@media (max-width:520px){h1{font-size:1.65rem}.match{grid-template-columns:1fr 1.3fr}.match button{font-size:.9rem}body{font-size:1.05rem}}
+.k-his{--c:#3566B8;--ct:rgba(53,102,184,0.1)}.k-del{--c:#8653B8;--ct:rgba(134,83,184,0.1)}.k-arv{--c:#B8661A;--ct:rgba(184,102,26,0.1)}.k-dna{--c:#2F8A5E;--ct:rgba(47,138,94,0.1)}.k-epi{--c:#B8467C;--ct:rgba(184,70,124,0.1)}.k-gte{--c:#13807A;--ct:rgba(19,128,122,0.1)}.k-rep{--c:#4A5A6B;--ct:rgba(74,90,107,0.1)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .k-his{--c:#7FA6E8;--ct:rgba(127,166,232,0.14)}:root:not([data-theme="light"]) .k-del{--c:#B48BE3;--ct:rgba(180,139,227,0.14)}:root:not([data-theme="light"]) .k-arv{--c:#F0A452;--ct:rgba(240,164,82,0.14)}:root:not([data-theme="light"]) .k-dna{--c:#5CC08F;--ct:rgba(92,192,143,0.14)}:root:not([data-theme="light"]) .k-epi{--c:#EB86B6;--ct:rgba(235,134,182,0.14)}:root:not([data-theme="light"]) .k-gte{--c:#4FC4B8;--ct:rgba(79,196,184,0.14)}:root:not([data-theme="light"]) .k-rep{--c:#AAB8C5;--ct:rgba(170,184,197,0.14)}:root:not([data-theme="light"]) .btn.main,:root:not([data-theme="light"]) .passlist .num,:root:not([data-theme="light"]) .step>h2 .sn,:root:not([data-theme="light"]) .tabs button[aria-pressed="true"],:root:not([data-theme="light"]) .answer span,:root:not([data-theme="light"]) .chip.sel{color:#161E26}}
+:root[data-theme="dark"] .k-his{--c:#7FA6E8;--ct:rgba(127,166,232,0.14)}:root[data-theme="dark"] .k-del{--c:#B48BE3;--ct:rgba(180,139,227,0.14)}:root[data-theme="dark"] .k-arv{--c:#F0A452;--ct:rgba(240,164,82,0.14)}:root[data-theme="dark"] .k-dna{--c:#5CC08F;--ct:rgba(92,192,143,0.14)}:root[data-theme="dark"] .k-epi{--c:#EB86B6;--ct:rgba(235,134,182,0.14)}:root[data-theme="dark"] .k-gte{--c:#4FC4B8;--ct:rgba(79,196,184,0.14)}:root[data-theme="dark"] .k-rep{--c:#AAB8C5;--ct:rgba(170,184,197,0.14)}:root[data-theme="dark"] .btn.main,:root[data-theme="dark"] .passlist .num,:root[data-theme="dark"] .step>h2 .sn,:root[data-theme="dark"] .tabs button[aria-pressed="true"],:root[data-theme="dark"] .answer span,:root[data-theme="dark"] .chip.sel{color:#161E26}
+
+.taps{line-height:2.4;margin:.2rem 0 .6rem}
+.tw{font:inherit;font-size:1.05rem;border:2px solid transparent;background:transparent;border-radius:6px;padding:0 .15rem;cursor:pointer;color:var(--ink)}
+.tw.static{cursor:default}
+.tw[aria-pressed="true"]{background:rgba(56,120,184,.18);border-color:#3878B8}
+.tw.ok{background:var(--okt);border-color:var(--ok)}
+.tw.no{background:var(--badt);border-color:var(--bad)}
+.tw.miss{border-color:var(--mid);border-style:dashed}
+.gap{font:inherit;font-size:.8rem;border:2px dashed var(--line);background:var(--paper);color:var(--soft);border-radius:999px;margin:0 .15rem;padding:0 .4rem;cursor:pointer;min-height:30px}
+.gap.ok{border-style:solid;border-color:var(--ok);background:var(--okt);color:var(--ink);font-weight:700;font-size:1rem}
+.gap.no{border-color:var(--bad);animation:shake .3s}
+.flyttout{font-size:1.15rem;background:var(--field);border:2px solid var(--line);border-radius:10px;padding:.5rem .8rem;margin:.6rem 0 .3rem}
+.flyttout .fund{background:rgba(232,131,58,.22);border-radius:6px;padding:0 .2rem;font-weight:600}
+.flyttout .fverb{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px;font-weight:600}
+.felbox{border-radius:10px;border:2px solid var(--line);padding:.4rem .8rem;margin:.5rem 0}
+.felbox .du{color:var(--bad);margin:.2rem 0}
+.felbox .ratt{margin:.2rem 0}
+.lara{border-left:5px solid var(--c);padding:.1rem .9rem;margin:.6rem 0;background:var(--ct);border-radius:0 10px 10px 0}
+.lara h3{margin:.4rem 0 .2rem;display:flex;gap:.5rem;align-items:center}
+.brev{white-space:normal}.brev p{margin:.2rem 0}
+</style>
+</head>
+<body>
+<div class="wrap"><main id="app"></main>
+<footer>Byggd utifrån Språklabb 1–4, övningarna, övningsprovet och Edgars egna anteckningar. Förklaringarna är skrivna med egna ord.</footer></div>
+<script>
+const D={"PASSES": [{"id": "s1", "n": 1, "c": "his", "t": "Finita verb och subjekt", "varfor": "Allt i grammatiken börjar med det finita verbet. Hittar du det, kan du hitta subjektet, räkna satser och hitta fundamentet.", "fel": [["Ett finit verb är något man gör i presens.", "Ett finit verb kan stå i presens (går), preteritum (gick) eller imperativ (gå!). Det viktiga är att verbet visar tid själv, utan hjälp."], ["Ett infinit verb är något man gör i dåtid.", "Infinita verb visar inte tid alls. ”Hade gått” är dåtid, men det är ”hade” som visar det. ”Gått” är infinit."], ["Ändra till preteritum: ”Jag undersöker huset” → nutid.", "Preteritum betyder dåtid, så du ska skriva om meningen: ”Jag undersökte huset.” Presens = nutid, preteritum = dåtid."], ["Imperativ: ”Du måste plugga!”", "Där står ”måste” i presens. Imperativ är en uppmaning där verbet står först och inget subjekt behövs: ”Plugga!”, ”Ta på dig skorna!”"]], "lara": [["Vad är ett finit verb?", "Ett finit verb visar <b>tid</b> på egen hand. Det kan stå i <b>presens</b> (nutid: <i>går, pluggar</i>), <b>preteritum</b> (dåtid: <i>gick, pluggade</i>) eller <b>imperativ</b> (uppmaning: <i>Gå! Plugga!</i>)."], ["Jag-testet", "Sätt ”jag” framför verbet. Låter det rätt är verbet finit: <i>jag pluggar</i> ✔, <i>jag pluggade</i> ✔, <i>jag plugga</i> ✘."], ["Tempustestet", "Byt mellan nutid och dåtid. Det verb som ändrar form är finit: <i>Hon <b>brukar</b> cykla</i> → <i>Hon <b>brukade</b> cykla</i>. ”Cykla” ändras inte, alltså infinit."], ["Verbkedjor: bara det första verbet är finit", "Står flera verb i rad är <b>bara det första</b> finit. Resten är infinita.<br><i>Hon <b>kan</b> förstå.</i> → kan = finit, förstå = infinit.<br><i>Jag <b>ska</b> göra läxan.</i> → ska = finit, göra = infinit.<br><i>Han <b>hade</b> glömt väskan.</i> → hade = finit, glömt = infinit."], ["Infinita verb", "Infinita verb visar inte tid och behöver ett finit hjälpverb framför sig:<br><b>infinitiv</b> (grundformen): <i>(att) läsa, ska läsa</i><br><b>supinum</b> (efter har/hade): <i>har läst, hade läst</i><br><b>particip</b> (nästan som adjektiv): <i>en läst bok, brevet är skrivet</i>"], ["Subjekt", "Subjektet är den eller det som gör det finita verbet. Fråga: <b>vem/vad + finit verb?</b><br><i>Det klåfingriga barnet slog på ugnen.</i> Vem slog? → <b>Det klåfingriga barnet</b>. Subjektet kan alltså vara flera ord."], ["Sats", "En sats = <b>subjekt + finit verb</b> (+ resten). En mening har <b>lika många satser som finita verb</b>."]], "tap": [["Tryck på alla finita verb", ["Hon *gick* in i köket och *satte* sig på stolen.", "Hon *vill* inte tänka på allt som *har* hänt.", "Farmoderns död *har* kommit så plötsligt att hon nästan inte *kan* förstå det.", "När hon *öppnar* boken *vet* hon vad hon *ska* göra.", "Strax ovanför huvudet *finns* det en hylla.", "Om du *vill* lyckas *måste* du träna regelbundet.", "Eleverna *har* studerat grammatik hela morgonen.", "*Ta* på dig jackan och *gå* ut!"]], ["Tryck på subjektet (alla ord som hör till det)", ["*Rektorn* suckade tungt.", "*Det* *klåfingriga* *barnet* slog på ugnen.", "I går träffade *jag* en trevlig granne.", "Plötsligt dök *den* *försvunna* *katten* upp på trappan.", "Efter den långa debatten fattade *politikerna* ett beslut.", "*Fem* *clowner* jonglerade på torget."]]], "sort": [["Finit eller infinit?", ["Finit", "Infinit"], [["går", 0], ["gick", 0], ["Gå! (uppmaning)", 0], ["har (i ”har läst”)", 0], ["kan (i ”kan förstå”)", 0], ["undersöker", 0], ["körde", 0], ["läst (i ”har läst”)", 1], ["förstå (i ”kan förstå”)", 1], ["plugga (i ”ska plugga”)", 1], ["att skriva", 1], ["glömt (i ”hade glömt”)", 1]]], ["Vilket tempus eller vilken form?", ["Presens (nutid)", "Preteritum (dåtid)", "Imperativ (uppmaning)"], [["Vi går till skolan.", 0], ["Jag undersöker huset.", 0], ["Alla älskar våren.", 0], ["Vi gick till skolan.", 1], ["Hon körde bilen.", 1], ["Jag undersökte huset.", 1], ["Gå till skolan!", 2], ["Öva på verb!", 2], ["Ta på dig skorna!", 2]]]], "mc": [["Vilket är det finita verbet i: ”Barnet hade glömt sin väska.”", ["Barnet", "hade", "glömt", "väska"], 1, "I verbkedjan ”hade glömt” är det första verbet finit."], ["Skriv om till preteritum: ”Jag undersöker huset.”", ["Jag undersöker huset.", "Jag undersökte huset.", "Jag har undersökt huset.", "Undersök huset!"], 1, "Preteritum = dåtid: undersökte."], ["Vilken mening står i imperativ?", ["Du måste plugga.", "Plugga nu!", "Jag pluggar.", "Han ska plugga."], 1, "Imperativ = uppmaning med verbet först, utan subjekt."], ["Hur många satser finns i: ”Om du vill lyckas måste du träna.”", ["1", "2", "3", "4"], 1, "Två finita verb (vill, måste) = två satser."], ["Vad är fel i: ”Jag vill bjuder in henne.”", ["Inget", "Två finita verb i rad – det ska vara ”vill bjuda”", "Subjekt saknas", "Det är en satsradning"], 1, "Efter hjälpverbet ”vill” ska verbet stå i infinitiv: bjuda."], ["Är ”plugga” finit eller infinit i ”Jag ska plugga ikväll”?", ["Finit", "Infinit"], 1, "”Ska” är finit, ”plugga” är infinit."]], "fragor": [["Vad är ett finit verb? Ge tre exempel i olika former.", ["Ett verb som visar tid på egen hand. Det står i presens (går), preteritum (gick) eller imperativ (gå!). Jag-testet: ”jag går” låter rätt."]], ["Vad är ett infinit verb? Ge två exempel.", ["Ett verb som inte visar tid själv och behöver ett finit hjälpverb. Till exempel infinitiv (ska läsa) och supinum (har läst)."]], ["Vilket verb är finit i en verbkedja som ”kommer att ha slutat”?", ["Det första: ”kommer”. Resten är infinita."]], ["Varför behöver en sats både subjekt och finit verb?", ["Det finita verbet visar vad som händer och när, och subjektet visar vem eller vad som gör det. Utan något av dem blir satsen ofullständig."]]]}, {"id": "s2", "n": 2, "c": "del", "t": "Huvudsats och bisats", "varfor": "Bisatser var ett av dina svaga områden. På provet ska du hitta dem, räkna dem, säga vilken sort de är och skriva egna.", "fel": [["En bisats fungerar som ett bindeord.", "En bisats är en hel sats: bisatsinledare + subjekt + finit verb + resten. Bindeordet är bara början, bisatsinledaren."], ["Hitta bisatsen: ”Eftersom bussen kom tidigt trodde de att de skulle hinna.” → ”Att”", "Bisatsen är hela delen: ”att de skulle hinna”. Och meningen har två bisatser – även ”Eftersom bussen kom tidigt”."], ["”Innan de gick till bion” är en huvudsats.", "Det är en bisats. Den börjar med bisatsinledaren ”innan” och kan inte stå ensam som mening. Står den ensam är det en fristående bisats, ett fel."], ["BIFF: i huvudsatsen kommer ”inte” före det finita verbet.", "Tvärtom! BIFF = Bisats Inte Före Finit. I en bisats: ”eftersom hon <b>inte kommer</b>”. I en huvudsats: ”hon <b>kommer inte</b>”."]], "lara": [["Huvudsats", "En huvudsats kan stå ensam som en mening: <i>Hon kommer imorgon.</i> Två huvudsatser kan bindas ihop med <b>samordnande konjunktioner</b>: och, men, eller, för, så."], ["Bisats", "En bisats kan <b>inte</b> stå ensam. Den hör alltid ihop med en huvudsats och börjar med en <b>bisatsinledare</b>.<br><i>Hon var glad <u>eftersom hon slapp provet</u>.</i><br>Bisatsen är <b>hela</b> den understrukna delen, inte bara ”eftersom”."], ["Tre sorters bisatser", "<b>Subjunktionsbisats</b> – inleds med en subjunktion: att, när, eftersom, om, medan, innan, trots att, för att, så att.<br><b>Relativ bisats</b> – inleds med som, vars, vilken/vilket/vilka, där, dit. Den beskriver något som nämnts: <i>en kille <u>som verkade hård</u></i>.<br><b>Frågebisats</b> – inleds med ett frågeord: vem, vad, var, vart, hur, varför, om. <i>Ingen visste <u>vad han höll på med</u></i>."], ["Tre tester: är det en bisats?", "1. <b>Kan den stå ensam som mening?</b> Nej → bisats.<br>2. <b>Börjar den med en bisatsinledare?</b> Ja → bisats.<br>3. <b>BIFF-regeln:</b> sätt in ”inte”. Hamnar det <b>före</b> det finita verbet → bisats."], ["BIFF-regeln", "<b>B</b>isats <b>I</b>nte <b>F</b>öre <b>F</b>inita verbet.<br>Huvudsats: <i>Hon <b>kommer inte</b> imorgon.</i><br>Bisats: <i>…eftersom hon <b>inte kommer</b> imorgon.</i>"], ["Konjunktion eller subjunktion?", "<b>Konjunktioner</b> (och, men, eller, för, så) binder ihop likvärdiga delar, till exempel två huvudsatser.<br><b>Subjunktioner</b> (att, när, eftersom, om …) inleder en bisats och gör den underordnad."], ["Fristående bisats – ett fel", "En bisats som står ensam med punkt är ett fel: <i>Vilket märks när han snor mina skor.</i> Rätta genom att sätta ihop den med huvudsatsen: <i>Max är busig, vilket märks när han snor mina skor.</i>"]], "tap": [["Tryck på alla ord i bisatserna (hela bisatsen, inte bara inledaren)", ["*Eftersom* *bussen* *kom* *tidigt* trodde de *att* *de* *skulle* *hinna*.", "Ryan var en kille *som* *på* *ytan* *verkade* *hård*.", "Eleverna var glada *eftersom* *de* *slapp* *prov* *idag*.", "*När* *Theo* *öppnade* *dörren* märkte han *att* *det* *doftade* *regn*.", "Ingen brydde sig om *vad* *han* *höll* *på* *med*.", "Det snöade hela natten, *vilket* *skapade* *problem* *i* *trafiken*.", "Hon frågade *om* *Susanna* *ville* *följa* *med*."]], ["Tryck på bisatsinledarna", ["Jag hoppas *att* du mår bra.", "*Medan* katten sov öppnade jag fönstret *eftersom* rummet var varmt.", "Han såg en hund *som* sprang över gräsmattan.", "Theo undrade *vad* hunden letade efter.", "*Trots* *att* gräset var vått satte han sig på en bänk.", "Han ville gå ut, men himlen var mörk."]]], "biff": [["Hon kommer imorgon.", 2, "Huvudsats: ”inte” efter det finita verbet → Hon kommer inte imorgon.", "h"], ["Jag stannar hemma eftersom jag är sjuk.", 5, "Bisatsen ”eftersom jag är sjuk”: ”inte” före det finita verbet → eftersom jag inte är sjuk.", "b"], ["Hon säger att boken är bra.", 4, "I bisatsen ”att boken är bra” hamnar ”inte” före ”är”: att boken inte är bra.", "b"], ["Vi hittade barnen.", 2, "Huvudsats: Vi hittade inte barnen.", "h"], ["Det var en sommar som tog slut.", 5, "Relativ bisats: som inte tog slut.", "b"], ["Theo gick ut fast det regnade.", 5, "Bisats: fast det inte regnade.", "b"]], "sort": [["Huvudsats eller bisats?", ["Huvudsats (kan stå ensam)", "Bisats (kan inte stå ensam)"], [["De gick till bion.", 0], ["Hon frös.", 0], ["Han ville gå ut.", 0], ["Theo plockade upp stenen.", 0], ["innan de gick till bion", 1], ["eftersom det var kallt", 1], ["som jag lånade igår", 1], ["vilket skapade problem", 1], ["att hon har en hund", 1], ["om du vill komma", 1]]], ["Vilken sorts bisats?", ["Subjunktionsbisats", "Relativ bisats", "Frågebisats"], [["…att de stannade hemma", 0], ["…när de skaffade solstolar", 0], ["…eftersom bussen kom tidigt", 0], ["…trots att gräset var vått", 0], ["…en kille som verkade hård", 1], ["…vilket skapade problem", 1], ["…boken vars pärmar var tunna", 1], ["…parken där vi brukar gå", 1], ["…vad han höll på med", 2], ["…varför den fångade hans intresse", 2], ["…vem du är", 2]]], ["Konjunktion eller subjunktion?", ["Samordnande konjunktion (binder ihop huvudsatser)", "Subjunktion (inleder bisats)"], [["och", 0], ["men", 0], ["eller", 0], ["så", 0], ["för", 0], ["att", 1], ["eftersom", 1], ["när", 1], ["medan", 1], ["trots att", 1], ["innan", 1], ["om", 1]]]], "mc": [["Hur många bisatser finns i: ”Eftersom bussen kom tidigt trodde de att de skulle hinna.”", ["0", "1", "2", "3"], 2, "”Eftersom bussen kom tidigt” och ”att de skulle hinna”."], ["Vilken är bisatsen i: ”Ryan var en kille som på ytan verkade hård.”", ["som", "Ryan var en kille", "som på ytan verkade hård", "verkade hård"], 2, "Hela satsen från bisatsinledaren till slutet."], ["Var står ”inte” i en bisats?", ["Efter det finita verbet", "Före det finita verbet", "Först i meningen", "Sist i meningen"], 1, "BIFF: Bisats Inte Före Finit."], ["Vilken mening är rätt?", ["Eftersom hon kommer inte imorgon …", "Eftersom hon inte kommer imorgon …"], 1, "I bisatsen kommer ”inte” före det finita verbet."], ["Vilket ord inleder en relativ bisats?", ["eftersom", "som", "men", "varför"], 1, "Som, vilket, vars, där."], ["”Innan de gick till bion.” Vad är det?", ["En huvudsats", "En fristående bisats – fel", "En korrekt mening", "En satsradning"], 1, "Den börjar med ”innan” och kan inte stå ensam."], ["Fyll i: ”Det var en sommar ___ aldrig tog slut.”", ["att", "som", "eftersom", "men"], 1, "Relativ bisats som beskriver sommaren."]], "fragor": [["Vad är en bisats? Förklara med ett eget exempel.", ["En sats som inte kan stå ensam utan hör till en huvudsats. Den börjar med en bisatsinledare och har eget subjekt och finit verb. Exempel: Jag stannade hemma <u>eftersom jag var sjuk</u>."]], ["Vilka är de tre sorternas bisatser? Ge ett exempel på varje.", ["Subjunktionsbisats: …eftersom det regnade.", "Relativ bisats: …en bok som jag gillar.", "Frågebisats: …varför han kom."]], ["Förklara BIFF-regeln.", ["Sätt in ”inte”. Hamnar det före det finita verbet är det en bisats (eftersom hon inte kommer). Hamnar det efter är det en huvudsats (hon kommer inte)."]], ["Vad är skillnaden mellan en konjunktion och en subjunktion?", ["Konjunktioner (och, men, eller) binder ihop jämställda satser. Subjunktioner (att, när, eftersom) inleder en bisats som blir underordnad huvudsatsen."]]]}, {"id": "s3", "n": 3, "c": "arv", "t": "Fundament, satsdelar och ordföljd", "varfor": "Fundament var ditt andra svaga område. På provet ska du stryka under fundamenten, beskriva dem och skriva med varierade fundament.", "fel": [["Rak ordföljd är när det som händer kommer först.", "Rak ordföljd betyder att meningen börjar med <b>subjektet</b>: <i>Jag promenerar varje morgon.</i>"], ["Omvänd ordföljd är när tiden kommer först.", "Omvänd ordföljd är när meningen börjar med <b>något annat än subjektet</b>: ett adverbial (tid, plats, sätt, orsak), ett objekt eller en bisats. <i>Varje morgon promenerar jag.</i>"], ["Fundamentet är första ordet.", "Fundamentet är <b>allt</b> före det finita verbet i huvudsatsen. Det kan vara ett ord (<i>Jag</i>) eller många (<i>Eftersom lägenheten ligger nära parken</i>)."]], "lara": [["Fundament", "Fundamentet är <b>allt som står före det finita verbet</b> i huvudsatsen.<br><i><u>Jag</u> promenerar varje morgon.</i><br><i><u>Varje morgon</u> promenerar jag.</i><br><i><u>Eftersom parken ligger nära</u> promenerar jag varje morgon.</i><br>Ett verb kan aldrig stå i fundamentet i ett påstående."], ["Hitta fundamentet i tre steg", "1. Hitta huvudsatsens finita verb.<br>2. Allt före det är fundamentet.<br>3. Fråga: vad är det för satsdel? Subjekt, adverbial, objekt eller en hel bisats?"], ["Satsdelarna", "<b>Subjekt</b> – vem/vad gör? <i>Hunden</i> skäller.<br><b>Objekt</b> – vem/vad utsätts för handlingen? Hunden jagar <i>katten</i>.<br><b>Adverbial</b> – omständigheter: var, när, hur, varför, med hjälp av vad? <i>i parken, i går, snabbt, eftersom han var hungrig</i>."], ["Rak och omvänd ordföljd", "<b>Rak:</b> subjektet först → <i>Jag träffade en granne i går.</i><br><b>Omvänd:</b> något annat först, och då kommer subjektet <b>efter</b> det finita verbet → <i>I går träffade jag en granne.</i><br>Det finita verbet står alltid på plats två."], ["De sju frågornas grammatik", "Tabellen har tre rutor: <b>Fundament | Finit verb | Resten</b>. Det finita verbet sitter fast i mitten. Du kan flytta in vem/vad, när, var, hur, varför eller med hjälp av vad i fundamentet.<br><i>Med hjälp av skorna springer Kalle.</i> ✔ <i>Kalle springer utomhus.</i> (rak, enkel)"], ["Varför variera?", "En text där alla meningar börjar med ”Jag …” eller ”Hon …” blir hackig och enkel. Blanda rak och omvänd ordföljd, men inte så mycket att det blir krångligt."]], "tap": [["Tryck på fundamentet (alla ord före huvudsatsens finita verb)", ["*I* *går* träffade jag en granne.", "*Min* *nya* *bostad* ligger nära en park.", "*Jag* promenerar i parken varje morgon.", "*Varje* *morgon* promenerar jag i parken.", "*Eftersom* *lägenheten* *ligger* *nära* *parken* brukar jag promenera där.", "*Snart* måste du hälsa på mig.", "*Med* *mörka* *prickar* är torskens sidor gröna.", "*Fisk* *och* *musslor* äter torsken."]]], "flytt": [["Jag promenerar i parken varje morgon.", [["jag", "subjekt"], ["promenerar", "V"], ["i parken", "adverbial (var?)"], ["varje morgon", "adverbial (när?)"]]], ["Kalle springer utomhus med hjälp av sina nya skor.", [["Kalle", "subjekt", 1], ["springer", "V"], ["utomhus", "adverbial (var?)"], ["med hjälp av sina nya skor", "adverbial (med hjälp av vad?)"]]], ["Torsken äter fisk och musslor på botten.", [["torsken", "subjekt"], ["äter", "V"], ["fisk och musslor", "objekt (vad?)"], ["på botten", "adverbial (var?)"]]], ["Hon bakade en kaka till grannen i eftermiddags.", [["hon", "subjekt"], ["bakade", "V"], ["en kaka", "objekt (vad?)"], ["till grannen", "adverbial (till vem?)"], ["i eftermiddags", "adverbial (när?)"]]], ["Eleverna gick hem eftersom skoldagen hade tagit slut.", [["eleverna", "subjekt"], ["gick", "V"], ["hem", "adverbial (vart?)"], ["eftersom skoldagen hade tagit slut", "bisats (varför?)"]]]], "sort": [["Vad står i fundamentet?", ["Subjekt (rak ordföljd)", "Adverbial (omvänd)", "Objekt (omvänd)", "Bisats (omvänd)"], [["Jag gillar min nya bostad.", 0], ["Hunden heter Max.", 0], ["Min nya bostad ligger nära en park.", 0], ["I går träffade jag en granne.", 1], ["Snart måste du hälsa på mig.", 1], ["Varje morgon promenerar jag.", 1], ["Fisk och musslor äter torsken.", 2], ["Den boken har jag redan läst.", 2], ["Eftersom det regnade stannade vi hemma.", 3], ["När vi kom fram pausade bussen.", 3]]]], "mc": [["Vad är fundamentet i: ”I går träffade jag en granne.”", ["I", "I går", "träffade", "jag"], 1, "Allt före det finita verbet ”träffade”."], ["Vilken mening har omvänd ordföljd?", ["Jag promenerar varje morgon.", "Varje morgon promenerar jag.", "Hon har en hund.", "Max är busig."], 1, "Den börjar med ett adverbial."], ["Kan ett verb stå i fundamentet i ett påstående?", ["Ja", "Nej"], 1, "Nej. I frågor och uppmaningar kan verbet komma först, men då finns inget fundament."], ["Vad är ”i parken” för satsdel?", ["Subjekt", "Objekt", "Adverbial", "Finit verb"], 2, "Svarar på var? → adverbial."], ["Vilken satsdel är ”en kaka” i ”Hon bakade en kaka”?", ["Subjekt", "Objekt", "Adverbial"], 1, "Vad bakade hon? → objekt."], ["Rak ordföljd betyder att meningen börjar med …", ["det som händer", "tiden", "subjektet", "verbet"], 2, "Subjekt först = rak ordföljd."], ["Vad händer med subjektet vid omvänd ordföljd?", ["Det försvinner", "Det hamnar direkt efter det finita verbet", "Det hamnar sist", "Det blir ett objekt"], 1, "I går träffade jag …"]], "fragor": [["Vad är ett fundament? Ge två exempel på olika slags fundament.", ["Allt som står före det finita verbet i huvudsatsen. Exempel: <u>Jag</u> går hem (subjekt). <u>Efter skolan</u> går jag hem (adverbial)."]], ["Vad är skillnaden mellan rak och omvänd ordföljd?", ["Rak: meningen börjar med subjektet. Omvänd: meningen börjar med något annat, till exempel ett adverbial, ett objekt eller en bisats, och subjektet hamnar efter det finita verbet."]], ["Vad är ett adverbial? Ge tre exempel.", ["En satsdel som berättar om omständigheterna: var (i parken), när (i går), hur (snabbt), varför (eftersom det regnade), med hjälp av vad (med cykel)."]], ["Varför bör man variera fundament och ordföljd i en text?", ["En text med bara rak ordföljd och korta subjektsfundament blir enformig och hackig. Variation ger flyt och högre stilnivå. Men för mycket variation kan göra texten svårläst, så balans är bäst."]]]}, {"id": "s4", "n": 4, "c": "epi", "t": "Höger- och vänstertunga meningar", "varfor": "På provet ska du avgöra om meningarna är höger- eller vänstertunga, förklara vad det betyder och skriva båda sorterna.", "fel": [["En högertung mening har den viktiga informationen efter verbet.", "Det handlar om <b>mängden</b> information. Högertung = <b>mycket</b> efter huvudsatsens finita verb och lite före. Vänstertung = <b>mycket</b> före det finita verbet (ett långt fundament)."]], "lara": [["Utgå från huvudsatsens finita verb", "Hitta huvudsatsens finita verb. Titta sedan på hur mycket som står till vänster (fundamentet) och till höger om det."], ["Högertung", "Kort fundament, mycket efter verbet:<br><i>Eleverna <b>gick</b> hem eftersom skoldagen hade avslutats.</i><br>Vanligast i svenskan och i enklare texter."], ["Vänstertung", "Långt fundament, ofta en hel bisats eller ett långt adverbial:<br><i>Eftersom skoldagen hade avslutats <b>gick</b> eleverna hem.</i><br>Vanligare i mer avancerade texter."], ["Så gör du en mening vänstertung", "Flytta bisatsen eller ett långt adverbial till fundamentet. Glöm inte att subjektet då hamnar efter verbet:<br><i>Jag promenerar i parken eftersom den ligger nära.</i> → <i>Eftersom parken ligger nära promenerar jag där.</i>"], ["Balans", "Bara högertunga meningar → enkelt intryck. Bara vänstertunga → svårläst. Blanda!"]], "tap": [["Tryck på huvudsatsens finita verb – sedan ser du åt vilket håll meningen väger", ["Eleverna *gick* hem eftersom skoldagen hade avslutats.", "Eftersom skoldagen hade avslutats *gick* eleverna hem.", "Om barn inte får lära sig sitt språk *kan* de senare få svårt att föra det vidare.", "När ett språk inte får användas i skolan *blir* det svårare att föra språket vidare.", "Det *betyder* att en minoritet förväntas anpassa sig till majoritetens språk."]]], "flytt": [["Jag promenerar i parken eftersom den ligger nära min lägenhet.", [["jag", "subjekt"], ["promenerar", "V"], ["i parken", "adverbial (var?)"], ["eftersom den ligger nära min lägenhet", "bisats (varför?)"]]], ["Hon tänkte baka en kaka för att hälsa grannen välkommen.", [["hon", "subjekt"], ["tänkte", "V"], ["baka en kaka", "resten"], ["för att hälsa grannen välkommen", "bisats/adverbial (varför?)"]]]], "sort": [["Högertung eller vänstertung?", ["Högertung", "Vänstertung"], [["Eleverna gick hem eftersom skoldagen hade avslutats.", 0], ["Hon berättade att hon har en hund som heter Max.", 0], ["Jag hoppas att hon vill komma på fika.", 0], ["Det är viktigt att vi aldrig glömmer historien.", 0], ["Eftersom skoldagen hade avslutats gick eleverna hem.", 1], ["När vi hade ätit middag och diskat gick vi ut.", 1], ["Att hon har en hund visste jag inte.", 1], ["Om barn inte får lära sig sitt språk kan de få svårt att föra det vidare.", 1]]]], "mc": [["Vad betyder att en mening är vänstertung?", ["Den har mycket information före huvudsatsens finita verb", "Den har den viktigaste informationen först", "Den har många verb", "Den saknar subjekt"], 0, "Långt fundament = vänstertung."], ["Vilken mening är vänstertung?", ["Jag gick hem när det blev mörkt.", "När det blev mörkt och kallt i parken gick jag hem.", "Jag gick hem.", "Hon sa att hon var trött."], 1, "Långt fundament med en bisats."], ["Vilken typ är vanligast i enklare texter?", ["Högertunga", "Vänstertunga"], 0, "Korta fundament och mycket efter verbet."], ["Hur gör du enklast en högertung mening vänstertung?", ["Lägger till fler verb", "Flyttar bisatsen till fundamentet", "Tar bort subjektet", "Sätter komma"], 1, "Bisatsen först, sedan finit verb och subjekt."]], "fragor": [["Förklara vad en högertung och en vänstertung mening är, med ett exempel på varje.", ["Högertung: lite före huvudsatsens finita verb och mycket efter. <i>Vi stannade hemma eftersom det regnade.</i>", "Vänstertung: mycket före det finita verbet. <i>Eftersom det regnade hela dagen stannade vi hemma.</i>"]], ["Varför ska en text ha både höger- och vänstertunga meningar?", ["Bara högertunga meningar ger ett enkelt och hackigt intryck. Bara vänstertunga gör texten tung och svårläst. En blandning ger variation och flyt."]]]}, {"id": "s5", "n": 5, "c": "gte", "t": "Satsradning och andra vanliga fel", "varfor": "I del 1 av provet ska du hitta felen, och i del 2 ska du undvika dem. Det är tre fel som brukar komma.", "fel": [], "lara": [["1. Satsradning", "Två huvudsatser med bara komma emellan: <i>Jag ska handla, jag måste köpa mjöl.</i><br>Rätta med punkt, konjunktion eller bisats:<br><i>Jag ska handla. Jag måste köpa mjöl.</i><br><i>Jag ska handla eftersom jag måste köpa mjöl.</i>"], ["2. Fristående bisats", "En bisats står ensam som mening: <i>Vilket märks när han snor mina skor.</i><br>Rätta genom att haka på den på huvudsatsen: <i>Max är busig, vilket märks när han snor mina skor.</i>"], ["3. Två finita verb i rad", "Efter ett hjälpverb (vill, ska, kan, måste) ska nästa verb stå i infinitiv:<br><i>Jag vill <s>bjuder</s> → bjuda in henne.</i>"], ["Fler saker som ger avdrag", "Liten bokstav i början av mening och i namn (<i>norge → Norge</i>), och meningar som saknar finit verb (<i>Ett fint brev från mig.</i>)."]], "tap": [], "sort": [["Vilket fel – eller är det rätt?", ["Rätt", "Satsradning", "Fristående bisats", "Två finita verb"], [["När jag kom hem lagade jag mat.", 0], ["Jag gillar att läsa men jag har svårt att hitta tid.", 0], ["Hon hade pluggat mycket inför provet.", 0], ["Jag var trött, jag gick ändå till träningen.", 1], ["Det regnade hela dagen, vi stannade hemma.", 1], ["Jag ville gå ut, jag hade för mycket att göra.", 1], ["Vilket märks när han snor mina skor.", 2], ["Eftersom jag vill klara provet.", 2], ["Som gjorde att alla skrattade.", 2], ["Jag vill bjuder in henne.", 3], ["Han kan kommer imorgon.", 3], ["Vi ska åkte till stan.", 3]]]], "mc": [["Hur rättar du satsradningen ”Jag var trött, jag gick ändå till träningen.”?", ["Jag var trött, jag gick ändå, till träningen.", "Jag var trött men jag gick ändå till träningen.", "Jag var trött jag gick ändå till träningen.", "Var trött, gick ändå till träningen."], 1, "En konjunktion binder ihop huvudsatserna."], ["Vilken mening är en fristående bisats?", ["Max är busig.", "Eftersom han är busig.", "Han är busig eftersom han är ung.", "Max snor mina skor."], 1, "Den börjar med en bisatsinledare och saknar huvudsats."], ["Rätta: ”Jag kan kommer imorgon.”", ["Jag kan kom imorgon.", "Jag kan komma imorgon.", "Jag kommer kan imorgon.", "Jag kunde kommer imorgon."], 1, "Efter ”kan” ska verbet stå i infinitiv."], ["Hur bäst rätta: ”Som gjorde att alla skrattade.”?", ["Ta bort meningen", "Haka på den: …på golvet, vilket gjorde att alla skrattade.", "Byt till: Som gjorde, att alla skrattade.", "Sätt utropstecken"], 1, "Haka på bisatsen på huvudsatsen och byt ”som” till ”vilket”."]], "fragor": [["Vad är en satsradning och hur rättar man den?", ["Två huvudsatser som bara skiljs åt med komma. Rätta med punkt, med en konjunktion (och, men, så) eller genom att göra den ena satsen till en bisats."]], ["Vad är en fristående bisats och varför är det fel?", ["En bisats som står ensam som en mening. En bisats kan inte bilda mening själv, den måste höra ihop med en huvudsats."]]]}], "ORDER": {}, "SORT": {}, "EXPLAIN": {}, "RITA": {}, "AVERY": [], "ETIK": [], "PED": [], "PED_OPTS": [], "FIGS": {}, "B": [["Finit verb", "Verb som visar tid själv: presens, preteritum eller imperativ.", "Hon gick hem. Hon går hem. Gå hem!", "his", "s"], ["Infinit verb", "Verb som inte visar tid själv och behöver ett finit hjälpverb.", "ska läsa, har läst", "his", "s"], ["Presens", "Nutid.", "Jag pluggar.", "his", "s"], ["Preteritum", "Dåtid.", "Jag pluggade.", "his", "s"], ["Imperativ", "Uppmaning, verbet först utan subjekt.", "Plugga nu!", "his", "s"], ["Infinitiv", "Verbets grundform, ofta med ”att” eller efter hjälpverb.", "att springa, ska springa", "his", "s"], ["Supinum", "Infinit form efter har/hade.", "har sprungit", "his", "s"], ["Hjälpverb", "Finit verb som hjälper ett annat verb.", "ska, vill, kan, måste, har", "his", "s"], ["Subjekt", "Den eller det som gör det finita verbet. Fråga vem/vad + finit verb.", "Det klåfingriga barnet slog på ugnen.", "his", "s"], ["Sats", "Subjekt + finit verb (+ resten). Lika många satser som finita verb.", "Hon frös.", "his", "s"], ["Huvudsats", "Sats som kan stå ensam som mening.", "Hon kommer imorgon.", "del", "s"], ["Bisats", "Sats som inte kan stå ensam och börjar med en bisatsinledare.", "…eftersom hon var trött", "del", "s"], ["Bisatsinledare", "Första ordet i en bisats.", "att, när, eftersom, som, vad", "del", "s"], ["Subjunktion", "Ordklass som inleder bisatser (underordnande konjunktion).", "att, eftersom, medan, trots att", "del", "s"], ["Samordnande konjunktion", "Binder ihop jämställda delar, till exempel huvudsatser.", "och, men, eller, för, så", "del", "s"], ["Subjunktionsbisats", "Bisats som inleds med en subjunktion.", "…eftersom bussen kom tidigt", "del", "s"], ["Relativ bisats", "Bisats som inleds med som, vilket, vars, där.", "…en kille som verkade hård", "del", "s"], ["Frågebisats", "Bisats som inleds med ett frågeord.", "…vad han höll på med", "del", "s"], ["BIFF-regeln", "Bisats Inte Före Finit: i en bisats står ”inte” före det finita verbet.", "…eftersom hon inte kommer", "del", "s"], ["Fundament", "Allt före det finita verbet i huvudsatsen.", "I går träffade jag en granne.", "arv", "s"], ["Objekt", "Satsdel som utsätts för handlingen.", "Hon bakade en kaka.", "arv", "s"], ["Adverbial", "Satsdel om omständigheter: var, när, hur, varför, med hjälp av vad.", "i parken, i går, snabbt", "arv", "s"], ["Rak ordföljd", "Meningen börjar med subjektet.", "Jag promenerar varje morgon.", "arv", "s"], ["Omvänd ordföljd", "Meningen börjar med något annat än subjektet, och subjektet kommer efter det finita verbet.", "Varje morgon promenerar jag.", "arv", "s"], ["Högertung mening", "Lite före och mycket efter huvudsatsens finita verb.", "Vi stannade hemma eftersom det regnade.", "epi", "s"], ["Vänstertung mening", "Mycket före huvudsatsens finita verb (långt fundament).", "Eftersom det regnade hela dagen stannade vi hemma.", "epi", "s"], ["Satsradning", "Två huvudsatser med bara komma emellan – ett fel.", "Jag var trött, jag gick ändå.", "gte", "s"], ["Fristående bisats", "En bisats som står ensam som mening – ett fel.", "Eftersom jag vill klara det.", "gte", "s"], ["Stilnivå", "Hur formell eller informell en text är.", "Fler substantiv och vänstertunga meningar ger högre stilnivå.", "gte", "s"], ["Nominalisering", "Ett verb eller adjektiv görs om till substantiv.", "förändra → förändring", "gte", "s"]], "RATT": [], "LETTERS": [{"id": "b1", "t": "Brev 1: Anna till Viktoria (övningsprovet)", "fin": "Kära Viktoria\nJag *hoppas* att du *mår* bra. Jag *bor* i en ny lägenhet nu och jag *gillar* verkligen min nya bostad. Min nya bostad *ligger* nära en park. Jag *promenerar* i parken varje morgon. Jag *träffade* en trevlig granne i går. Hon *berättade* att hon *har* en hund. Hunden *heter* Max. Max *är* väldigt busig. Vilket *märks* när han *snor* mina skor. Jag *vill* baka en kaka till min granne. Jag *ska* handla i eftermiddag, jag *måste* köpa mjöl. Jag *vill* *bjuder* in henne på fika. Jag *hoppas* att hon *vill* komma. Snart *måste* du hälsa på mig. Vi *kan* kanske dricka kaffe tillsammans?\nKram, Anna", "finNote": "”Vill bjuder” har två finita verb i rad. Det är ett av felen i brevet: det ska vara ”vill bjuda”.", "fund": "Kära Viktoria\n*Jag* hoppas att du mår bra. *Jag* bor i en ny lägenhet nu och *jag* gillar verkligen min nya bostad. *Min* *nya* *bostad* ligger nära en park. *Jag* promenerar i parken varje morgon. *Jag* träffade en trevlig granne i går. *Hon* berättade att hon har en hund. *Hunden* heter Max. *Max* är väldigt busig. Vilket märks när han snor mina skor. *Jag* vill baka en kaka till min granne. *Jag* ska handla i eftermiddag, *jag* måste köpa mjöl. *Jag* vill bjuder in henne på fika. *Jag* hoppas att hon vill komma. *Snart* måste du hälsa på mig. *Vi* kan kanske dricka kaffe tillsammans?\nKram, Anna", "fundNote": "Subjekten i bisatserna (”att <u>du</u> mår”, ”att <u>hon</u> har”) är inte fundament – fundament finns bara i huvudsatser. ”Vilket märks …” saknar fundament eftersom huvudsats saknas.", "facit": [["Beskriv fundamenten.", "Nästan alla fundament är korta subjekt, oftast ”Jag”. Ett är lite längre (”Min nya bostad”) och ett enda är ett adverbial (”Snart”)."], ["Är ordföljden varierad?", "Nej. Nästan alla meningar har rak ordföljd (subjekt + finit verb). Bara ”Snart måste du …” har omvänd ordföljd."], ["Höger- eller vänstertunga meningar?", "Högertunga. Fundamenten är korta och informationen kommer efter det finita verbet. Det gör texten hackig."], ["Hur många bisatser, och vilka sorter?", "Fyra: ”att du mår bra”, ”att hon har en hund”, ”att hon vill komma” och den fristående ”Vilket märks när han snor mina skor” (där finns även ”när han snor mina skor”). Nästan bara att-bisatser, alltså lite variation."], ["Är meningslängden varierad?", "Nej. De flesta meningar består av en enda huvudsats med ett finit verb och är 4–7 ord långa."], ["Satsradningar?", "En: ”Jag ska handla i eftermiddag, jag måste köpa mjöl.”"], ["Ofullständiga meningar eller fel?", "Fristående bisats: ”Vilket märks när han snor mina skor.” Två finita verb: ”Jag vill bjuder in henne.”"]], "modell": "Kära Viktoria,\n\nJag hoppas att allt är bra med dig! Nu har jag äntligen flyttat in i min nya lägenhet, som jag verkligen trivs i. Eftersom den ligger alldeles intill en park brukar jag ta en promenad där varje morgon.\n\nI går träffade jag en trevlig granne. När vi stod och pratade berättade hon att hon har en hund som heter Max. Han är väldigt busig, vilket märks när han snor mina skor. För att hälsa henne välkommen vill jag baka en kaka, så i eftermiddag måste jag handla mjöl. Jag hoppas att hon har tid att komma när jag bjuder in henne på fika.\n\nSnart måste du också hälsa på mig, så att vi kan dricka kaffe tillsammans!\n\nKram,\nAnna", "refl": ["<b>”Eftersom den ligger alldeles intill en park brukar jag ta en promenad där varje morgon.”</b> Jag flyttade bisatsen (eftersom …) till fundamentet. Då blev meningen vänstertung och fick omvänd ordföljd: subjektet ”jag” hamnade efter det finita verbet ”brukar”.", "<b>”Han är väldigt busig, vilket märks när han snor mina skor.”</b> Jag rättade den fristående bisatsen genom att haka på den på huvudsatsen. Nu är den en relativ bisats som hör ihop med en huvudsats.", "<b>”För att hälsa henne välkommen vill jag baka en kaka, så i eftermiddag måste jag handla mjöl.”</b> Jag tog bort satsradningen och band ihop huvudsatserna med konjunktionen ”så”. Fundamentet ”För att hälsa henne välkommen” är ett adverbial som ger omvänd ordföljd."]}, {"id": "b2", "t": "Brev 2: Leo till Sara", "fin": "Hej Sara!\nJag *har* börjat på ett nytt jobb. Jobbet *är* på ett café i stan. Jag *jobbar* varje lördag. Chefen *är* snäll. Hon *heter* Lena. I går *hände* något roligt. En kund *tappade* sin glass på golvet, jag *fick* torka upp. Som *gjorde* att alla *skrattade*. Jag *ska* spara mina pengar. Jag *vill* *köper* en ny cykel. Jag *hoppas* att du *kan* komma och fika snart.\nHälsningar, Leo", "finNote": "”Vill köper” har två finita verb i rad – ett fel. Det ska vara ”vill köpa”.", "fund": "Hej Sara!\n*Jag* har börjat på ett nytt jobb. *Jobbet* är på ett café i stan. *Jag* jobbar varje lördag. *Chefen* är snäll. *Hon* heter Lena. *I* *går* hände något roligt. *En* *kund* tappade sin glass på golvet, *jag* fick torka upp. Som gjorde att alla skrattade. *Jag* ska spara mina pengar. *Jag* vill köper en ny cykel. *Jag* hoppas att du kan komma och fika snart.\nHälsningar, Leo", "fundNote": "”Som gjorde att alla skrattade” har inget fundament eftersom huvudsats saknas.", "facit": [["Beskriv fundamenten.", "Nästan alla är korta subjekt (Jag, Jobbet, Chefen, Hon, En kund). Ett enda är ett adverbial: ”I går”."], ["Är ordföljden varierad?", "Nej. Bara ”I går hände något roligt” har omvänd ordföljd. Resten har rak ordföljd."], ["Höger- eller vänstertunga meningar?", "Högertunga, med korta fundament och informationen efter verbet."], ["Hur många bisatser, och vilka sorter?", "Tre: den fristående relativa bisatsen ”Som gjorde …”, ”att alla skrattade” och ”att du kan komma och fika snart”. Lite variation."], ["Är meningslängden varierad?", "Nej. Nästan alla meningar är korta och har bara en huvudsats."], ["Satsradningar?", "En: ”En kund tappade sin glass på golvet, jag fick torka upp.”"], ["Ofullständiga meningar eller fel?", "Fristående bisats: ”Som gjorde att alla skrattade.” Två finita verb: ”Jag vill köper en ny cykel.”"]], "modell": "Hej Sara!\n\nNu har jag börjat på ett nytt jobb på ett café i stan, där jag jobbar varje lördag. Chefen, som heter Lena, är väldigt snäll.\n\nI går hände något roligt. När en kund tappade sin glass på golvet fick jag torka upp, vilket gjorde att alla skrattade. Eftersom jag vill köpa en ny cykel tänker jag spara alla pengar som jag tjänar.\n\nJag hoppas att du kan komma och fika snart!\n\nHälsningar,\nLeo", "refl": ["<b>”När en kund tappade sin glass på golvet fick jag torka upp, vilket gjorde att alla skrattade.”</b> Jag gjorde om satsradningen till en bisats som fundament (När …), vilket gav omvänd ordföljd. Den fristående bisatsen blev en relativ bisats med ”vilket”.", "<b>”Eftersom jag vill köpa en ny cykel tänker jag spara alla pengar som jag tjänar.”</b> Meningen är vänstertung eftersom bisatsen står i fundamentet. Jag rättade också ”vill köper” till ”vill köpa”.", "<b>”Chefen, som heter Lena, är väldigt snäll.”</b> Jag satte ihop två korta huvudsatser genom att göra den ena till en inskjuten relativ bisats."]}, {"id": "b3", "t": "Brev 3: Alva till mormor", "fin": "Hej mormor!\nDet *har* varit en lång vecka. Vi *har* prov i skolan. Provet *handlar* om grammatik. Jag *pluggar* varje kväll. Jag *tycker* att det *är* svårt. Jag *ger* ändå inte upp. Läraren *säger* att jag *har* blivit bättre. På fredag *är* det prov igen, jag *är* lite nervös. Eftersom jag *vill* klara det. Efter provet *ska* jag vila. Jag *kan* kanske *kommer* och hälsa på dig.\nKram, Alva", "finNote": "”Kan kommer” har två finita verb i rad – ett fel. Det ska vara ”kan komma”.", "fund": "Hej mormor!\n*Det* har varit en lång vecka. *Vi* har prov i skolan. *Provet* handlar om grammatik. *Jag* pluggar varje kväll. *Jag* tycker att det är svårt. *Jag* ger ändå inte upp. *Läraren* säger att jag har blivit bättre. *På* *fredag* är det prov igen, *jag* är lite nervös. Eftersom jag vill klara det. *Efter* *provet* ska jag vila. *Jag* kan kanske kommer och hälsa på dig.\nKram, Alva", "fundNote": "”Eftersom jag vill klara det” är en fristående bisats och har inget fundament.", "facit": [["Beskriv fundamenten.", "De flesta är korta subjekt (Det, Vi, Provet, Jag, Läraren). Två är adverbial: ”På fredag” och ”Efter provet”."], ["Är ordföljden varierad?", "Lite. Två meningar har omvänd ordföljd (”På fredag är det …”, ”Efter provet ska jag …”), resten rak."], ["Höger- eller vänstertunga meningar?", "Mest högertunga. Inga meningar har ett långt fundament."], ["Hur många bisatser, och vilka sorter?", "Tre: ”att det är svårt”, ”att jag har blivit bättre” och den fristående ”Eftersom jag vill klara det”. Två att-bisatser och en eftersom-bisats."], ["Är meningslängden varierad?", "Nej. Meningarna är korta med en eller två satser."], ["Satsradningar?", "En: ”På fredag är det prov igen, jag är lite nervös.”"], ["Ofullständiga meningar eller fel?", "Fristående bisats: ”Eftersom jag vill klara det.” Två finita verb: ”Jag kan kanske kommer …”"]], "modell": "Hej mormor!\n\nDet har varit en lång vecka, eftersom vi har prov i skolan. Provet handlar om grammatik, så jag pluggar varje kväll. Även om jag tycker att det är svårt ger jag inte upp. Läraren säger nämligen att jag har blivit bättre.\n\nPå fredag är det prov igen. Eftersom jag verkligen vill klara det är jag lite nervös. Efter provet ska jag vila, och sedan kan jag kanske komma och hälsa på dig.\n\nKram,\nAlva", "refl": ["<b>”Även om jag tycker att det är svårt ger jag inte upp.”</b> Meningen är vänstertung eftersom fundamentet är en bisats (”Även om …”) som i sin tur har en att-bisats. Ordföljden är omvänd.", "<b>”Eftersom jag verkligen vill klara det är jag lite nervös.”</b> Jag rättade den fristående bisatsen och satsradningen genom att göra bisatsen till fundament i en ny mening.", "<b>”Provet handlar om grammatik, så jag pluggar varje kväll.”</b> Jag band ihop två korta huvudsatser med konjunktionen ”så”, vilket varierar meningslängden."]}], "CHECK": ["Varierad meningslängd – korta och längre meningar blandas", "Minst tre olika bisatsinledare (t.ex. eftersom, när, som, vilket, så att)", "Ingen satsradning", "Inga fristående bisatser och inga meningar utan finit verb", "Varierade fundament – inte bara ”Jag …”", "Omvänd ordföljd i några meningar (börjar med adverbial eller bisats)", "Minst en vänstertung mening", "Rättade verbformer (vill bjuda, inte vill bjuder)"], "STARTERS": ["Jag flyttade bisatsen ”…” till fundamentet. Då blev meningen vänstertung och fick omvänd ordföljd.", "Jag tog bort satsradningen genom att …", "Jag band ihop två huvudsatser med konjunktionen ”…”.", "Jag gjorde om den fristående bisatsen till en del av meningen genom att …", "Jag varierade fundamentet genom att börja med adverbialet ”…” i stället för subjektet.", "Jag använde bisatsinledaren ”…”, vilket gör att meningen …"]};
+/* ===================== Hjälpfunktioner ===================== */
+const $ = (s, r) => (r || document).querySelector(s);
+const el = (tag, attrs, ...kids) => {
+  const e = document.createElement(tag);
+  if (attrs) for (const k in attrs) {
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k === 'text') e.textContent = v;
+    else if (k === 'html') e.innerHTML = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (k === 'style') e.setAttribute('style', v);
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) e.append(k.nodeType ? k : document.createTextNode(k));
+  return e;
+};
+const mix = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const kc = k => 'k-' + k;
+const norm = s => (s || '').toLowerCase().replace(/[’']/g, "'");
+function hasKw(text, alt) { const t = norm(text); return alt.split('|').some(a => t.includes(norm(a))); }
+
+let voices = [];
+function sayText(t) {
+  if (!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t.replace(/→/g, ', sedan '));
+  u.lang = 'sv-SE'; u.rate = .9;
+  const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('sv')); if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+const sayBtn = (t, label) => ('speechSynthesis' in window) ? el('button', { class: 'say', 'aria-label': label || 'Lyssna', onclick: () => sayText(typeof t === 'function' ? t() : t) }, '🔊') : null;
+
+/* ===================== Sparande ===================== */
+const LS = 'edgar-svenska-v1';
+let S = { v: 1, u: 0, q: {}, t: {}, ck: {}, cards: {}, last: '' };
+try { const raw = localStorage.getItem(LS); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+let dbRef = null, syncMode = 'local', saveTimer = null, writing = false, pending = false;
+function save() {
+  S.u = Date.now();
+  try { localStorage.setItem(LS, JSON.stringify(S)); } catch (e) {}
+  if (dbRef) { clearTimeout(saveTimer); saveTimer = setTimeout(pushDb, 1500); }
+}
+async function pushDb() {
+  if (!dbRef) return;
+  if (writing) { pending = true; return; }
+  writing = true;
+  try { await dbRef.set({ json: JSON.stringify(S), u: S.u }); } catch (e) { if (e && (e.code === 'not_granted' || e.code === 'invalid_argument')) { dbRef = null; syncMode = 'local'; updSync(); } }
+  writing = false;
+  if (pending) { pending = false; pushDb(); }
+}
+function updSync() {
+  document.querySelectorAll('.sync').forEach(s => s.textContent = syncMode === 'db'
+    ? 'Dina svar sparas i ditt Claude-konto och följer med mellan dina enheter.'
+    : 'Dina svar sparas på den här enheten.');
+}
+(async function initDb() {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const [db, user] = await Promise.all([claude.use('db'), claude.use('user')]);
+    if (!db || !user) return;
+    const id = await user.id(); if (!id) return;
+    const ref = db.doc('data/users/' + id + '/svenska');
+    const snap = await ref.get();
+    dbRef = ref; syncMode = 'db';
+    if (snap.exists) {
+      const d = snap.data(); let remote = null;
+      try { remote = JSON.parse(d.json); } catch (e) {}
+      if (remote && (remote.u || 0) > (S.u || 0)) { S = Object.assign({ q: {}, t: {}, ck: {}, cards: {} }, remote); try { localStorage.setItem(LS, JSON.stringify(S)); } catch (e) {} render(); }
+      else if ((S.u || 0) > (remote ? remote.u || 0 : 0)) pushDb();
+    } else if (S.u) pushDb();
+    updSync();
+  } catch (e) { dbRef = null; syncMode = 'local'; }
+})();
+
+/* ===================== Data ===================== */
+const PASS = {}; D.PASSES.forEach(p => PASS[p.id] = p);
+const Q = {}; // id -> {id, pass, q, a}
+D.PASSES.forEach(p => (p.fragor || []).forEach((f, i) => { const id = p.id + '-' + (i + 1); Q[id] = { id, pass: p.id, q: f[0], a: f[1] }; }));
+const passQs = pid => Object.values(Q).filter(x => x.pass === pid);
+
+function weight(id, unseenW) {
+  const r = S.q[id];
+  if (!r) return unseenW;
+  const days = (Date.now() - (r.at || 0)) / 864e5;
+  return [0.6 + Math.min(days, 10) * 0.15, 3, 5][r.s];
+}
+function pickWeighted(ids, n, unseenW) {
+  const pool = ids.map(id => ({ id, w: weight(id, unseenW) * (0.6 + Math.random() * 0.8) }));
+  pool.sort((a, b) => b.w - a.w);
+  return pool.slice(0, n).map(x => x.id);
+}
+
+/* ===================== Komponenter ===================== */
+function qCard(id, opts) {
+  opts = opts || {};
+  const x = Q[id]; const p = PASS[x.pass];
+  const wrap = el('div', { class: 'qc' });
+  const ansBox = el('div', { class: 'ans', hidden: true }, x.a.map(t => el('p', { text: t })));
+  const grade = el('div', { class: 'grade' });
+  const labels = ['Kunde', 'Osäker', 'Kunde inte'];
+  const gb = labels.map((l, g) => el('button', { class: 'g' + g + ((S.q[id] && S.q[id].s === g) ? ' on' : ''), onclick: () => {
+    S.q[id] = { s: g, at: Date.now() }; save(); gb.forEach((b, k) => b.classList.toggle('on', k === g)); if (opts.onGrade) opts.onGrade();
+  } }, l));
+  grade.append(el('span', { class: 'soft small', text: 'Hur gick det?' }), ...gb);
+  const sb = sayBtn(() => x.q + '. ' + x.a.join(' '), 'Lyssna på fråga och svar');
+  if (sb) ansBox.append(sb);
+  wrap.append(el('p', { class: 'qt' }, el('span', { text: (opts.num ? opts.num + '. ' : '') + x.q }), opts.showFrom ? el('span', { class: 'from', text: 'Pass ' + p.n }) : null));
+  if (opts.write !== false) {
+    const ta = el('textarea', { 'aria-label': 'Ditt svar', placeholder: 'Skriv ditt svar här…' });
+    ta.value = S.t['a-' + id] || '';
+    ta.addEventListener('input', () => { S.t['a-' + id] = ta.value; save(); });
+    wrap.append(ta);
+  }
+  const showB = el('button', { class: 'btn', onclick: () => { ansBox.hidden = !ansBox.hidden; grade.hidden = ansBox.hidden && !S.q[id]; showB.textContent = ansBox.hidden ? 'Visa svaret' : 'Dölj svaret'; } }, 'Visa svaret');
+  grade.hidden = !S.q[id];
+  wrap.append(el('div', { class: 'row', style: 'margin-top:.4rem' }, showB), ansBox, grade);
+  return wrap;
+}
+
+function stepBox(pid, n, title, ...content) {
+  const key = 's-' + pid + '-' + n;
+  const box = el('section', { class: 'step' + (S.ck[key] ? ' isdone' : '') });
+  const b = el('button', { class: 'stepdone', 'aria-pressed': S.ck[key] ? 'true' : 'false', onclick: () => {
+    S.ck[key] = !S.ck[key]; save(); b.setAttribute('aria-pressed', S.ck[key] ? 'true' : 'false'); box.classList.toggle('isdone', !!S.ck[key]); b.textContent = S.ck[key] ? '✓ Klart' : 'Markera klart';
+  } }, S.ck[key] ? '✓ Klart' : 'Markera klart');
+  box.append(el('h2', null, el('span', { class: 'sn', text: n }), el('span', { text: title }), b), ...content);
+  return box;
+}
+
+function textArea(key, ph, rows) {
+  const ta = el('textarea', { placeholder: ph || '', rows: rows || 4, 'aria-label': ph || 'Text' });
+  ta.value = S.t[key] || '';
+  ta.addEventListener('input', () => { S.t[key] = ta.value; save(); });
+  return ta;
+}
+
+/* ===================== Router ===================== */
+const NAV = [['hem', 'Översikt'], ['prov', 'Provträning'], ['begrepp', 'Begrepp']];
+function topnav(cur) {
+  return el('nav', { class: 'topnav', 'aria-label': 'Meny' }, NAV.map(([h, t]) => el('a', { href: '#' + h, 'aria-current': cur === h ? 'page' : null, text: t })));
+}
+function render() {
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  const h = (location.hash || '').replace('#', '') || 'hem';
+  const root = $('#app'); root.innerHTML = '';
+  let view;
+  if (PASS[h]) { S.last = h; save(); view = viewPass(PASS[h]); }
+  else if (h.startsWith('x-') && EX[h.slice(2)]) view = viewEx(h.slice(2));
+  else if (h === 'ovningar') view = viewExList();
+  else if (h === 'begrepp') view = viewBegrepp();
+  else if (h === 'prov') view = viewProv();
+  else if (h === 'hemma') view = viewHemma();
+  else view = viewHome();
+  root.append(view);
+  updSync();
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', render);
+
+/* ===================== Översikt ===================== */
+function passDone(p) { return !!S.ck['done-' + p.id]; }
+function viewHome() {
+  const v = el('div');
+  v.append(topnav('hem'));
+  const exam = new Date(2026, 10, 20, 8, 20);
+  const days = Math.ceil((exam - new Date()) / 864e5);
+  const done = D.PASSES.filter(passDone).length;
+  const next = D.PASSES.find(p => !passDone(p));
+  const g = [0, 0, 0]; Object.values(S.q).forEach(r => g[r.s]++);
+  v.append(el('div', { class: 'hero ' + kc('his') },
+    el('h1', { text: 'Genetik inför Prov 2' }),
+    el('p', { class: 'soft', text: 'Biologi Campus 1, kapitel 3: s. 146–201 och 208–219. Provet är fredag 20 november.' }),
+    el('div', { class: 'row' }, el('span', { class: 'big', text: days > 0 ? days : 0 }), el('span', { text: days === 1 ? 'dag kvar till provet' : 'dagar kvar till provet' })),
+    el('div', { class: 'bar', role: 'img', 'aria-label': done + ' av 15 pass klara' }, el('i', { style: 'width:' + Math.round(done / 15 * 100) + '%' })),
+    el('div', { class: 'stat' }, el('span', null, el('b', { text: done }), ' av 15 pass klara'),
+      el('span', null, el('b', { text: g[0] }), ' frågor kunde'), el('span', null, el('b', { text: g[1] }), ' osäkra'), el('span', null, el('b', { text: g[2] }), ' kunde inte')),
+    next ? el('p', { style: 'margin:.8rem 0 0' }, el('a', { class: 'btn main ' + kc(next.c), href: '#' + next.id }, (done ? 'Fortsätt med pass ' : 'Börja med pass ') + next.n + ': ' + next.t)) : el('p', { text: 'Alla pass är klara. Bra jobbat! Kör provträningen en gång till.' })
+  ));
+  v.append(el('div', { class: 'card' },
+    el('h2', { text: 'Så går ett pass till' }),
+    el('p', { text: 'Ett pass tar ungefär 45 minuter. Gör stegen i ordning.' }),
+    el('ol', null,
+      el('li', null, el('b', { text: 'Minnesstart. ' }), 'Några frågor från tidigare pass. Att plocka fram det du lärt dig förut är det som får det att fastna.'),
+      el('li', null, el('b', { text: 'Gissa först. ' }), 'Gissa svaret på dagens fråga innan du läser. Det gör inget om det blir fel.'),
+      el('li', null, el('b', { text: 'Läs i boken. ' }), '5–8 sidor, med en läsguide om vad du ska leta efter.'),
+      el('li', null, el('b', { text: 'Hjärnsläpp. ' }), 'Stäng boken och skriv allt du minns. Jämför sedan.'),
+      el('li', null, el('b', { text: 'Instuderingsfrågor. ' }), 'Svara först, titta sedan. Markera om du kunde.'),
+      el('li', null, el('b', { text: 'Övningar. ' }), 'Träna på ett annat sätt: sortera, ordna, rita, räkna eller förklara.')),
+    el('p', { class: 'small soft', text: 'Frågor du markerar som osäkra eller inte kunde kommer tillbaka oftare i minnesstarten och provträningen.' })));
+  const list = el('div', { class: 'card' }, el('h2', { text: 'Alla pass' }));
+  let wk = '';
+  let ul = null;
+  D.PASSES.forEach(p => {
+    if (p.week !== wk) { wk = p.week; list.append(el('p', { class: 'wk', text: { 'v.44': 'Vecka 44 (lov)', 'v.45': 'Vecka 45', 'v.46': 'Vecka 46', 'v.47': 'Vecka 47 – provveckan' }[wk] })); ul = el('ul', { class: 'passlist' }); list.append(ul); }
+    ul.append(el('li', { class: passDone(p) ? 'done' : '' }, el('a', { href: '#' + p.id, class: kc(p.c) },
+      el('span', { class: 'num', text: passDone(p) ? '✓' : p.n }),
+      el('span', null, p.t, el('span', { class: 'meta', text: p.pages !== '–' ? 'Sidorna ' + p.pages : 'Repetition' })))));
+  });
+  v.append(list);
+  v.append(el('p', { class: 'sync' }));
+  return v;
+}
+
+/* ===================== Pass ===================== */
+function viewPass(p) {
+  const v = el('div', { class: kc(p.c) });
+  v.append(topnav(''));
+  const i = D.PASSES.indexOf(p);
+  v.append(el('div', { class: 'hero ' + kc(p.c) },
+    el('p', { class: 'soft', style: 'margin:0', text: 'Pass ' + p.n + ' av 15' + (p.pages !== '–' ? ', sidorna ' + p.pages : '') }),
+    el('h1', { text: p.t })));
+  if (p.rep) v.append(...repSteps(p)); else v.append(...passSteps(p));
+  const dk = 'done-' + p.id;
+  const db = el('button', { class: 'btn main ' + kc(p.c), onclick: () => { S.ck[dk] = !S.ck[dk]; save(); render(); } }, S.ck[dk] ? '✓ Passet är klart (ångra)' : 'Markera passet som klart');
+  v.append(el('div', { class: 'row', style: 'margin:1rem 0' }, db));
+  v.append(el('div', { class: 'row' },
+    i > 0 ? el('a', { class: 'btn', href: '#' + D.PASSES[i - 1].id }, '← Pass ' + (p.n - 1)) : null,
+    el('a', { class: 'btn', href: '#hem' }, 'Översikt'),
+    i < D.PASSES.length - 1 ? el('a', { class: 'btn', href: '#' + D.PASSES[i + 1].id }, 'Pass ' + (p.n + 1) + ' →') : null));
+  v.append(el('p', { class: 'sync' }));
+  return v;
+}
+
+function passSteps(p) {
+  const out = [];
+  // 1 Minnesstart
+  const earlier = D.PASSES.filter(x => x.n < p.n && !x.rep).flatMap(x => passQs(x.id).map(q => q.id));
+  const ms = el('div');
+  const fill = () => {
+    ms.innerHTML = '';
+    if (!earlier.length) { ms.append(el('p', { text: 'Det här är första passet, så det finns inget att repetera än. Gå direkt till steg 2.' })); return; }
+    ms.append(el('p', { text: 'Svara i huvudet eller skriv kort. Titta sedan på svaret och markera hur det gick.' }));
+    pickWeighted(earlier, 4, 2).forEach(id => ms.append(qCard(id, { showFrom: true, write: false })));
+    ms.append(el('button', { class: 'btn', onclick: fill }, 'Andra frågor'));
+  };
+  fill();
+  out.push(stepBox(p.id, 1, 'Minnesstart', ms));
+  // 2 Gissa
+  const gAns = el('div', { class: 'ans', hidden: true }, el('p', { text: p.gissa[1] }));
+  out.push(stepBox(p.id, 2, 'Gissa först',
+    el('p', { class: 'qt' }, el('b', { text: p.gissa[0] }), sayBtn(p.gissa[0])),
+    textArea('g-' + p.id, 'Skriv din gissning…', 3),
+    el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: () => { gAns.hidden = !gAns.hidden; } }, 'Visa förklaringen')), gAns));
+  // 3 Läs
+  out.push(stepBox(p.id, 3, 'Läs i boken, sidorna ' + p.pages,
+    el('p', { text: 'Leta efter det här när du läser:' }),
+    el('ul', null, p.guide.map(t => el('li', { text: t }))),
+    el('div', { class: 'tip' }, el('b', { text: 'Titta extra noga på bilderna: ' }), p.bilder.join('. ') + '.'),
+    el('p', { class: 'small soft', text: 'Läs även bildtexterna och de små ordförklaringarna i marginalen.' })));
+  // 4 Hjärnsläpp
+  const res = el('div', { hidden: true });
+  const ta = textArea('h-' + p.id, 'Skriv allt du minns, med egna ord. Stödord går bra.', 7);
+  const showRes = () => {
+    res.innerHTML = '';
+    const txt = ta.value;
+    let hits = 0;
+    const ul = el('ul', { class: 'pts' });
+    p.punkter.forEach(([t, kws], j) => {
+      const ck = 'hp-' + p.id + '-' + j;
+      const auto = kws.every(k => hasKw(txt, k));
+      const hit = S.ck[ck] != null ? S.ck[ck] : auto;
+      if (hit) hits++;
+      const li = el('li', { class: hit ? 'hit' : '' });
+      const mk = el('button', { class: 'mk', 'aria-label': 'Fick med det här', onclick: () => { S.ck[ck] = !li.classList.contains('hit'); save(); showRes(); } });
+      li.append(mk, el('span', { text: t }));
+      ul.append(li);
+    });
+    res.append(el('p', null, el('b', { text: 'Du fick med ungefär ' + hits + ' av ' + p.punkter.length + ' viktiga punkter.' }), ' Gröna punkter fanns i din text. Tryck på en ring om du själv tycker att du fick med den.'),
+      ul, el('div', { class: 'row' }, sayBtn(() => p.punkter.map(x => x[0]).join(' '), 'Lyssna på sammanfattningen'), el('span', { class: 'small soft', text: 'Lyssna på sammanfattningen' })),
+      el('p', { class: 'small soft', text: 'Läs om de punkter du missade, i boken eller här.' }));
+    res.hidden = false;
+  };
+  out.push(stepBox(p.id, 4, 'Hjärnsläpp', el('p', { text: 'Stäng boken. Skriv ner allt du minns från det du läste: begrepp, förklaringar, exempel. Ungefär fem minuter.' }), ta,
+    el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: showRes }, 'Jämför med sammanfattningen')), res));
+  // 5 Frågor
+  const qs = el('div');
+  passQs(p.id).forEach((x, k) => qs.append(qCard(x.id, { num: k + 1 })));
+  out.push(stepBox(p.id, 5, 'Instuderingsfrågor', el('p', { text: 'Skriv ditt svar först. Tryck sedan på ”Visa svaret” och markera hur det gick.' }), qs));
+  // 6 Övningar
+  out.push(stepBox(p.id, 6, 'Övningar', el('p', { text: 'Välj minst två. Fler om du hinner.' }), exLinks(p.ovn)));
+  return out;
+}
+
+function exLinks(ids) {
+  return el('div', { class: 'exl' }, ids.filter(id => EX[id]).map(id => el('a', { href: '#x-' + id, class: kc(EX[id].c) + (S.ck['x-' + id] ? ' done' : ''), text: EX[id].icon + ' ' + EX[id].t })));
+}
+
+function repSteps(p) {
+  const out = [];
+  const ids = p.rep.flatMap(pid => passQs(pid).map(q => q.id));
+  const n = p.id === 'p15' ? 8 : 10;
+  const box = el('div');
+  const fill = () => {
+    box.innerHTML = '';
+    pickWeighted(ids, n, 1.5).forEach((id, k) => box.append(qCard(id, { num: k + 1, showFrom: true })));
+    box.append(el('button', { class: 'btn', onclick: fill }, 'Nya frågor'));
+  };
+  fill();
+  const intro = {
+    p12: 'Nu blandar vi frågor från pass 1–6. Frågor du haft svårt för kommer oftare.',
+    p13: 'Nu blandar vi frågor från pass 7–11. Frågor du haft svårt för kommer oftare.',
+    p14: 'Gör provträningen: 15 frågor från hela området, som på ett riktigt prov. Skriv svaren ordentligt.',
+    p15: 'Kort och lugnt. Repetera det du var osäker på, gå igenom begreppskorten och sov gott.'
+  }[p.id];
+  out.push(el('div', { class: 'card' }, el('p', { text: intro })));
+  if (p.id === 'p14') out.push(stepBox(p.id, 1, 'Provträning', el('p', null, el('a', { class: 'btn main ' + kc('rep'), href: '#prov' }, 'Starta provträningen'))));
+  else out.push(stepBox(p.id, 1, 'Blandade frågor', box));
+  out.push(stepBox(p.id, 2, 'Övningar', el('p', { text: 'Gör de övningar som kändes svårast förra gången.' }), exLinks(p.ovn)));
+  out.push(stepBox(p.id, 3, 'Begrepp', el('p', { text: 'Gå igenom begreppen. Välj ”Para ihop” eller ”Gissa begreppet”.' }), el('a', { class: 'btn', href: '#begrepp' }, 'Till begreppen')));
+  return out;
+}
+
+/* ===================== Provträning ===================== */
+function viewProv() {
+  const v = el('div', { class: kc('rep') });
+  v.append(topnav('prov'));
+  v.append(el('div', { class: 'hero ' + kc('rep') }, el('h1', { text: 'Provträning' }),
+    el('p', { text: '15 frågor från hela provområdet. Svara skriftligt, som på provet. Titta sedan på svaret och var ärlig när du markerar.' })));
+  const all = Object.keys(Q).filter(id => !PASS[Q[id].pass].rep);
+  const box = el('div', { class: 'card' });
+  const sum = el('p', { class: 'msg' });
+  const upd = () => { const ids = [...box.querySelectorAll('.qc')].map(x => x.dataset.id); const g = [0, 0, 0]; let n = 0; ids.forEach(id => { if (S.q[id] && S.q[id].at > started) { g[S.q[id].s]++; n++; } }); sum.textContent = n ? `Hittills: ${g[0]} kunde, ${g[1]} osäkra, ${g[2]} kunde inte (av ${n} rättade).` : ''; };
+  let started = Date.now();
+  const fill = () => {
+    started = Date.now(); box.innerHTML = '';
+    pickWeighted(all, 15, 2).forEach((id, k) => { const c = qCard(id, { num: k + 1, showFrom: true, onGrade: upd }); c.dataset.id = id; box.append(c); });
+    upd();
+  };
+  fill();
+  v.append(box, sum, el('div', { class: 'row' }, el('button', { class: 'btn', onclick: fill }, 'Nytt prov')));
+  return v;
+}
+
+/* ===================== Övningsregister ===================== */
+const EX = {};
+for (const id in D.ORDER) { const o = D.ORDER[id]; EX[id] = { t: o[0], c: o[1], icon: '👆', kind: 'Tryck i rätt ordning', run: c => runOrder(c, id) }; }
+for (const id in D.SORT) { if (id === 's_hemma') continue; const o = D.SORT[id]; EX[id] = { t: o[0], c: o[1], icon: '🗂️', kind: 'Sortera', run: c => runSort(c, id) }; }
+for (const id in D.FIGS) { const f = D.FIGS[id]; EX[id] = { t: f.title, c: f.c, icon: '🖼️', kind: 'Sätt namn på bilden', run: c => runLabel(c, id) }; }
+for (const id in D.EXPLAIN) { const o = D.EXPLAIN[id]; EX[id] = { t: 'Förklara: ' + o[0], c: o[1], icon: '💬', kind: 'Förklara för en 12-åring', run: c => runExplain(c, id) }; }
+for (const id in D.RITA) { const o = D.RITA[id]; EX[id] = { t: o[0], c: o[1], icon: '✏️', kind: 'Rita själv och jämför', run: c => runRita(c, id) }; }
+EX.korsning = { t: 'Korsningsschema-tränaren', c: 'arv', icon: '🧮', kind: 'Räkna', run: c => runKorsning(c) };
+EX.mutlab = { t: 'Mutationslabbet', c: 'dna', icon: '🧬', kind: 'Räkna', run: c => runMutlab(c) };
+EX.slakt = { t: 'Släkttavledetektiven', c: 'arv', icon: '🔎', kind: 'Räkna', run: c => runSlakt(c) };
+EX.avery = { t: 'Averys försök', c: 'his', icon: '🐭', kind: 'Förutsäg', run: c => runAvery(c) };
+EX.etik = { t: 'Etikverkstaden', c: 'gte', icon: '⚖️', kind: 'Ta ställning', run: c => runEtik(c) };
+EX.prov = { t: 'Provträning', c: 'rep', icon: '📝', kind: 'Prov', link: '#prov' };
+EX.begrepp = { t: 'Begreppslistan', c: 'rep', icon: '📖', kind: 'Begrepp', link: '#begrepp' };
+EX.kort = { t: 'Begreppskort', c: 'rep', icon: '🃏', kind: 'Begrepp', link: '#begrepp' };
+EX.hemma = { t: 'Du och dina gener', c: 'epi', icon: '🏠', kind: 'Hemma', link: '#hemma' };
+for (const id in EX) if (EX[id].link) EX[id].t = EX[id].t;
+
+function markDone(id) { if (!S.ck['x-' + id]) { S.ck['x-' + id] = true; save(); } }
+
+function viewEx(id) {
+  const x = EX[id];
+  if (x.link) { location.hash = x.link; return el('div'); }
+  const v = el('div', { class: kc(x.c) });
+  v.append(topnav('ovningar'));
+  const back = S.last && PASS[S.last] ? el('a', { class: 'btn', href: '#' + S.last }, '← Tillbaka till pass ' + PASS[S.last].n) : el('a', { class: 'btn', href: '#ovningar' }, '← Alla övningar');
+  v.append(el('div', { class: 'row', style: 'margin-bottom:.8rem' }, back));
+  const card = el('div', { class: 'card k ' + kc(x.c) }, el('p', { class: 'soft small', style: 'margin:0', text: x.kind }), el('h2', { text: x.t }));
+  v.append(card);
+  x.run(card);
+  const doneB = el('button', { class: 'btn', onclick: () => { S.ck['x-' + id] = !S.ck['x-' + id]; save(); doneB.textContent = S.ck['x-' + id] ? '✓ Klar' : 'Markera som klar'; } }, S.ck['x-' + id] ? '✓ Klar' : 'Markera som klar');
+  v.append(el('div', { class: 'row' }, doneB, back.cloneNode(true)));
+  return v;
+}
+
+function viewExList() {
+  const v = el('div');
+  v.append(topnav('ovningar'));
+  v.append(el('h1', { text: 'Alla övningar' }), el('p', { class: 'soft', text: 'Varje pass föreslår övningar, men här finns alla samlade. En bock betyder att du gjort övningen.' }));
+  const groups = {};
+  for (const id in EX) { const k = EX[id].kind; (groups[k] = groups[k] || []).push(id); }
+  ['Räkna', 'Förutsäg', 'Tryck i rätt ordning', 'Sortera', 'Sätt namn på bilden', 'Rita själv och jämför', 'Förklara för en 12-åring', 'Ta ställning'].forEach(k => {
+    if (!groups[k]) return;
+    v.append(el('div', { class: 'card' }, el('h2', { text: k }), el('div', { class: 'exl' }, groups[k].map(id => el('a', { href: '#x-' + id, class: kc(EX[id].c) + (S.ck['x-' + id] ? ' done' : ''), text: EX[id].icon + ' ' + EX[id].t })))));
+  });
+  return v;
+}
+
+/* ===================== Drag-hjälp ===================== */
+function dragChip(c, selector, onDrop, onTap) {
+  let sx, sy, ghost = null, moved = false;
+  c.addEventListener('pointerdown', e => { sx = e.clientX; sy = e.clientY; moved = false; try { c.setPointerCapture(e.pointerId); } catch (_) {} });
+  c.addEventListener('pointermove', e => {
+    if (sx === undefined) return;
+    if (!ghost && Math.hypot(e.clientX - sx, e.clientY - sy) > 6) { ghost = c.cloneNode(true); ghost.classList.add('ghost', 'sel'); document.body.appendChild(ghost); moved = true; }
+    if (ghost) { ghost.style.left = e.clientX + 'px'; ghost.style.top = e.clientY + 'px'; }
+  });
+  c.addEventListener('pointerup', e => { if (ghost) { const t = document.elementFromPoint(e.clientX, e.clientY); const z = t && t.closest(selector); ghost.remove(); ghost = null; if (z) onDrop(c, z); } sx = undefined; });
+  c.addEventListener('pointercancel', () => { if (ghost) { ghost.remove(); ghost = null; } sx = undefined; });
+  c.addEventListener('click', () => { if (moved) { moved = false; return; } onTap(c); });
+}
+
+/* ===================== Ordning ===================== */
+function runOrder(card, id) {
+  const [t, c, hint, steps] = D.ORDER[id];
+  const ans = el('div', { class: 'answer' }), pool = el('div', { class: 'pool' }), msg = el('p', { class: 'msg', 'aria-live': 'polite' });
+  const start = () => {
+    ans.innerHTML = ''; pool.innerHTML = ''; msg.textContent = ''; let step = 0;
+    mix(steps).forEach(w => { const b = el('button', { text: w, onclick: () => {
+      if (w === steps[step]) { ans.append(el('span', { text: w })); b.remove(); step++; msg.textContent = step === steps.length ? 'Helt rätt! 🎉' : 'Bra! Vad kommer sedan?'; if (step === steps.length) markDone(id); }
+      else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); msg.textContent = 'Inte riktigt – försök igen.'; }
+    } }); pool.append(b); });
+  };
+  card.append(el('p', { text: hint }), ans, pool, msg, el('button', { class: 'btn', onclick: start }, 'Börja om'));
+  start();
+}
+
+/* ===================== Sortera ===================== */
+function runSort(card, id, opts) {
+  const [t, c, names, items] = D.SORT[id];
+  const pool = el('div', { class: 'pool' }), bk = el('div', { class: 'buckets' }), msg = el('p', { class: 'msg', 'aria-live': 'polite' }), cnt = el('span', { class: 'count' });
+  const box = el('div'); let sel = null, done = 0;
+  const upd = () => { cnt.textContent = done + ' av ' + items.length + ' rätt'; if (done === items.length) { msg.textContent = 'Alla rätt! 🎉'; if (!opts) markDone(id); } };
+  const pick = ch => { if (sel) sel.classList.remove('sel'); sel = sel === ch ? null : ch; if (sel) sel.classList.add('sel'); box.classList.toggle('picking2', !!sel); };
+  const put = (ch, b) => {
+    if (+ch.dataset.k === +b.dataset.k) { b.append(el('div', { class: 'in', text: ch.textContent })); ch.remove(); done++; if (sel === ch) { sel = null; box.classList.remove('picking2'); } msg.textContent = 'Rätt! ✔'; upd(); }
+    else { b.classList.remove('no'); void b.offsetWidth; b.classList.add('no'); msg.textContent = 'Inte riktigt – försök igen.'; }
+  };
+  const start = () => {
+    sel = null; done = 0; msg.textContent = ''; pool.innerHTML = ''; bk.innerHTML = ''; box.classList.remove('picking2');
+    names.forEach((n, k) => { const b = el('div', { class: 'bucket', 'data-k': k }, el('h3', { text: n })); b.addEventListener('click', e => { if (sel && !e.target.closest('.in')) put(sel, b); }); bk.append(b); });
+    mix(items).forEach(([txt, k]) => { const ch = el('button', { class: 'chip', text: txt, 'data-k': k }); dragChip(ch, '.bucket', put, pick); pool.append(ch); });
+    upd();
+  };
+  box.append(el('p', { text: 'Dra varje kort till rätt låda, eller tryck på kortet och sedan på lådan.' }), pool, bk, msg, el('div', { class: 'row' }, el('button', { class: 'btn', onclick: start }, 'Börja om'), cnt));
+  card.append(box); start();
+}
+
+/* ===================== Bildövning ===================== */
+function runLabel(card, id) {
+  const d = D.FIGS[id];
+  const fig = el('div', { class: 'fig' }), chips = el('div', { class: 'chips' }), msg = el('p', { class: 'msg', 'aria-live': 'polite' }), cnt = el('span', { class: 'count' });
+  let sel = null, done = 0;
+  const upd = () => { cnt.textContent = done + ' av ' + d.zones.length + ' rätt'; if (done === d.zones.length) { msg.textContent = 'Alla rätt! 🎉'; markDone(id); } };
+  const select = c => { if (sel) sel.classList.remove('sel'); sel = sel === c ? null : c; if (sel) sel.classList.add('sel'); fig.classList.toggle('picking', !!sel); };
+  const place = (c, z) => {
+    if (z.classList.contains('ok') || z.classList.contains('shown')) return;
+    if (c.dataset.a === z.dataset.a) { z.textContent = c.dataset.a; z.classList.remove('no'); z.classList.add('ok'); c.remove(); done++; if (sel === c) { sel = null; fig.classList.remove('picking'); } msg.textContent = 'Rätt! ✔'; upd(); }
+    else { z.classList.remove('no'); void z.offsetWidth; z.classList.add('no'); msg.textContent = 'Inte där. Titta vart strecket pekar och försök igen.'; }
+  };
+  const start = () => {
+    sel = null; done = 0; msg.textContent = ''; fig.innerHTML = ''; chips.innerHTML = ''; fig.classList.remove('picking');
+    fig.style.minWidth = d.minw ? d.minw + 'px' : ''; fig.style.maxWidth = d.maxw ? d.maxw + 'px' : '';
+    fig.append(el('img', { src: d.src, alt: d.title }));
+    d.zones.forEach(z => { const e = el('div', { class: 'zone', 'data-a': z.a, style: `left:${z.l}%;top:${z.t}%;width:${z.w}%;height:${z.h}%` }); e.addEventListener('click', () => { if (sel) place(sel, e); }); fig.append(e); });
+    mix(d.zones.map(z => z.a)).forEach(a => { const c = el('button', { class: 'chip', text: a, 'data-a': a }); dragChip(c, '.zone', place, select); chips.append(c); });
+    upd(); sizeZones();
+  };
+  const sizeZones = () => { requestAnimationFrame(() => { const w = fig.clientWidth || 600; const fs = Math.max(11, Math.min(17, w * 0.019)); fig.querySelectorAll('.zone').forEach(z => z.style.fontSize = fs + 'px'); }); };
+  window.addEventListener('resize', sizeZones);
+  card.append(el('p', { text: 'Dra ordet till rätt ruta, eller tryck på ordet och sedan på rutan. Titta vart strecket pekar! Är bilden bredare än skärmen kan du svepa i den.' }),
+    el('div', { class: 'figscroll' }, fig), chips, msg,
+    el('div', { class: 'row' }, el('button', { class: 'btn', onclick: start }, 'Börja om'),
+      el('button', { class: 'btn', onclick: () => { fig.querySelectorAll('.zone:not(.ok)').forEach(z => { z.textContent = z.dataset.a; z.classList.add('shown'); }); chips.innerHTML = ''; msg.textContent = 'Här är svaren. Tryck på Börja om och prova själv.'; } }, 'Visa svaren'), cnt));
+  start();
+}
+
+/* ===================== Förklara ===================== */
+function runExplain(card, id) {
+  const [t, c, prompt, kws, model] = D.EXPLAIN[id];
+  const res = el('div', { hidden: true });
+  const ta = textArea('fk-' + id, 'Skriv din förklaring här. Använd vanliga ord, men få med de viktiga begreppen.', 7);
+  const check = () => {
+    res.innerHTML = '';
+    const txt = ta.value; let hit = 0;
+    const kw = el('div', { class: 'kw' }, kws.map(alts => { const ok = alts.some(a => hasKw(txt, a)); if (ok) hit++; return el('span', { class: ok ? 'hit' : 'miss', text: (ok ? '✓ ' : '') + alts[0] }); }));
+    res.append(el('p', null, el('b', { text: `Du fick med ${hit} av ${kws.length} nyckelord.` }), hit === kws.length ? ' Snyggt!' : ' De gula saknas. Kan du få in dem?'), kw,
+      el('div', { class: 'ans' }, el('p', null, el('b', { text: 'Ett exempel på en bra förklaring: ' }), model), sayBtn(model)));
+    res.hidden = false; if (hit >= kws.length - 1) markDone(id);
+  };
+  card.append(el('p', { class: 'qt' }, el('b', { text: prompt })),
+    el('p', { class: 'small soft', text: 'Tänk dig att du förklarar för en yngre kompis. Om du kan förklara enkelt har du verkligen förstått.' }),
+    ta, el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: check }, 'Kolla min förklaring')), res);
+}
+
+/* ===================== Rita ===================== */
+function runRita(card, id) {
+  const [t, c, prompt, list, fig] = D.RITA[id];
+  const cv = el('canvas', { class: 'canv', 'aria-label': 'Rityta' });
+  let color = '#1D2B3A', drawing = false, last = null, ctx;
+  const setup = () => {
+    const r = cv.getBoundingClientRect(); const dpr = window.devicePixelRatio || 1;
+    const old = S_draw()[id] || null;
+    cv.width = r.width * dpr; cv.height = r.height * dpr; ctx = cv.getContext('2d'); ctx.scale(dpr, dpr); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (old) { const im = new Image(); im.onload = () => ctx.drawImage(im, 0, 0, r.width, r.height); im.src = old; }
+  };
+  const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  cv.addEventListener('pointerdown', e => { drawing = true; last = pos(e); try { cv.setPointerCapture(e.pointerId); } catch (_) {} });
+  cv.addEventListener('pointermove', e => { if (!drawing) return; const p = pos(e); ctx.strokeStyle = color; ctx.lineWidth = color === '#FFFFFF' ? 22 : 3; ctx.beginPath(); ctx.moveTo(last[0], last[1]); ctx.lineTo(p[0], p[1]); ctx.stroke(); last = p; });
+  const end = () => { if (!drawing) return; drawing = false; try { const all = S_draw(); all[id] = cv.toDataURL('image/png'); localStorage.setItem('edgar-rit', JSON.stringify(all)); } catch (_) {} };
+  cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+  const tb = [['#1D2B3A', 'Svart'], ['#D04848', 'Röd'], ['#3878B8', 'Blå'], ['#3E9A6E', 'Grön'], ['#FFFFFF', 'Sudd']].map(([col, n]) =>
+    el('button', { 'aria-label': n, 'aria-pressed': col === color ? 'true' : 'false', style: `background:${col === '#FFFFFF' ? 'var(--paper)' : col};${col === '#FFFFFF' ? '' : 'color:#fff'}`, onclick: e => { color = col; tb.forEach(b => b.setAttribute('aria-pressed', 'false')); e.currentTarget.setAttribute('aria-pressed', 'true'); } }, col === '#FFFFFF' ? '⌫' : ''));
+  const cmp = el('div', { hidden: true });
+  cmp.append(el('h3', { text: 'Jämför med bilden' }), el('div', { class: 'figscroll' }, el('img', { src: D.FIGS[fig].facit, alt: D.FIGS[fig].title, style: 'width:100%;display:block' })),
+    el('h3', { text: 'Fick du med det här?' }), el('ul', { class: 'pts' }, list.map((x, j) => { const k = 'r-' + id + '-' + j; const li = el('li', { class: S.ck[k] ? 'hit' : '' }); li.append(el('button', { class: 'mk', 'aria-label': 'Med', onclick: () => { S.ck[k] = !S.ck[k]; save(); li.classList.toggle('hit', !!S.ck[k]); } }), el('span', { text: x })); return li; })));
+  card.append(el('p', { class: 'qt' }, el('b', { text: prompt })), el('p', { class: 'small soft', text: 'Rita med fingret, pennan eller musen. Du kan också rita på papper. Att rita själv gör att du minns bättre än om du bara tittar på en bild.' }),
+    el('div', { class: 'tools' }, tb, el('button', { onclick: () => { ctx.clearRect(0, 0, cv.width, cv.height); try { const all = S_draw(); delete all[id]; localStorage.setItem('edgar-rit', JSON.stringify(all)); } catch (_) {} }, 'aria-label': 'Rensa' }, '🗑️')),
+    cv, el('div', { class: 'row', style: 'margin-top:.5rem' }, el('button', { class: 'btn', onclick: () => { cmp.hidden = false; markDone(id); } }, 'Jämför med facit')), cmp);
+  requestAnimationFrame(setup);
+}
+function S_draw() { try { return JSON.parse(localStorage.getItem('edgar-rit') || '{}'); } catch (_) { return {}; } }
+
+/* ===================== Averys försök ===================== */
+function runAvery(card) {
+  card.append(el('p', { text: 'År 1944 ville Oswald Avery ta reda på vad som bär arvet: proteiner eller DNA. Han injicerade möss med olika sorters bakterier. Gissa för varje försök: lever musen eller dör den?' }));
+  let right = 0, n = 0;
+  const msg = el('p', { class: 'msg' });
+  D.AVERY.forEach(([txt, dies, why], i) => {
+    const res = el('div', { class: 'ans', hidden: true }, el('p', { text: why }));
+    const bs = ['Lever', 'Dör'].map((l, k) => el('button', { class: 'btn', onclick: () => {
+      if (!res.hidden) return;
+      bs.forEach(b => b.disabled = true); n++;
+      if (k === dies) { right++; bs[k].style.background = 'var(--okt)'; bs[k].style.borderColor = 'var(--ok)'; res.prepend(el('p', null, el('b', { text: 'Rätt!' }))); }
+      else { bs[k].style.borderColor = 'var(--bad)'; res.prepend(el('p', null, el('b', { text: 'Inte riktigt.' }))); }
+      res.hidden = false; msg.textContent = `${right} rätt av ${n}.`; if (n === D.AVERY.length) markDone('avery');
+    } }, l));
+    card.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: 'Försök ' + (i + 1) + ': ' + txt }), el('div', { class: 'row' }, bs), res));
+  });
+  card.append(msg, el('p', { class: 'small soft', text: 'Försöken finns som bild på s. 152 i boken.' }));
+}
+
+/* ===================== Etikverkstaden ===================== */
+function runEtik(card) {
+  const tabs = el('div', { class: 'tabs' }); const body = el('div');
+  const show = i => {
+    [...tabs.children].forEach((b, k) => b.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    const [t, q] = D.ETIK[i]; const k = 'e' + i;
+    body.innerHTML = '';
+    body.append(el('p', { class: 'exq', text: q }),
+      el('h3', { text: 'Argument för' }), textArea(k + '-for', 'Minst två argument…', 3),
+      el('h3', { text: 'Argument emot' }), textArea(k + '-mot', 'Minst två argument…', 3),
+      el('h3', { text: 'Vilken etisk utgångspunkt passar dina argument?' }),
+      el('p', { class: 'small soft', text: 'Konsekvensetik (väga nytta och risker), pliktetik (regler om rätt och fel), miljöetik (naturens arvsmassa ska inte ändras) eller försiktighetsprincipen (avstå om det kan skada).' }),
+      textArea(k + '-etik', 'Till exempel: Mitt första argument för är konsekvensetiskt eftersom…', 3),
+      el('h3', { text: 'Min ståndpunkt' }), textArea(k + '-slut', 'Jag tycker att… eftersom… Samtidigt förstår jag att…', 4),
+      el('div', { class: 'tip' }, el('b', { text: 'Ett bra svar på provet ' }), 'tar upp argument från båda sidor, kopplar dem till biologin (vad tekniken faktiskt gör) och avslutar med en tydlig, motiverad ståndpunkt.'));
+  };
+  D.ETIK.forEach(([t], i) => tabs.append(el('button', { onclick: () => show(i), style: '--c:var(--c)' }, t)));
+  card.append(el('p', { text: 'Välj en fråga och resonera. Det finns inget facit, men det finns bra och mindre bra resonemang.' }), tabs, body,
+    el('p', null, el('a', { class: 'btn', href: '#x-s_etik' }, '🗂️ Öva på de etiska skolorna först')));
+  show(0); markDone('etik');
+}
+
+/* ===================== Korsningsschema-tränaren ===================== */
+const KT = {
+  mono: { name: 'Vanlig (dominant och recessiv)', traits: [
+    { n: 'Ärtors färg', D: 'G', r: 'g', dom: 'gula ärtor', rec: 'gröna ärtor', who: ['Planta 1', 'Planta 2'] },
+    { n: 'Albinism', D: 'A', r: 'a', dom: 'normal pigmentering', rec: 'albinism', who: ['Mamma', 'Pappa'] },
+    { n: 'Fräknar', D: 'F', r: 'f', dom: 'fräknar', rec: 'inga fräknar', who: ['Mamma', 'Pappa'] },
+    { n: 'Solrosblad', D: 'G', r: 'g', dom: 'normalgröna blad', rec: 'ljust gulgröna blad', who: ['Planta 1', 'Planta 2'] }] },
+  inter: { name: 'Intermediär (underblomman)' },
+  blod: { name: 'Blodgrupper (kodominans)' },
+  x: { name: 'X-bunden (färgblindhet)' },
+  di: { name: 'Dihybrid (två gener)' }
+};
+const XR = 'Xᴿ', Xr = 'Xʳ';
+function runKorsning(card) {
+  const tabs = el('div', { class: 'tabs' }), body = el('div');
+  const types = Object.keys(KT); let cur = 'mono';
+  types.forEach(t => tabs.append(el('button', { onclick: () => { cur = t; go(); } }, KT[t].name)));
+  const go = () => { [...tabs.children].forEach((b, k) => b.setAttribute('aria-pressed', types[k] === cur ? 'true' : 'false')); body.innerHTML = ''; (cur === 'di' ? diRound : monoRound)(body, cur); };
+  card.append(el('p', { text: 'Varje gång du trycker på ”Ny korsning” slumpas nya föräldrar. Fyll i korsningsschemat och svara sedan på frågan.' }), tabs, body);
+  go();
+}
+function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
+function monoRound(body, type) {
+  let P1, P2, order, phen, who, title, desc, question, target, qfilter = null;
+  if (type === 'mono') {
+    const tr = rnd(KT.mono.traits); const g = [tr.D + tr.D, tr.D + tr.r, tr.r + tr.r];
+    P1 = rnd(g).split(''); P2 = rnd(g).split(''); order = a => a === a.toUpperCase() ? 0 : 1;
+    phen = gt => gt.includes(tr.D) ? tr.dom : tr.rec; who = tr.who; title = tr.n + ': ' + tr.D + ' = ' + tr.dom + ', ' + tr.r + ' = ' + tr.rec;
+    const qt = rnd(['rec', 'dom', 'het']);
+    if (qt === 'het') { question = 'Hur stor är chansen att avkomman blir heterozygot (' + tr.D + tr.r + ')?'; target = gt => gt[0] !== gt[1]; }
+    else { const f = qt === 'rec' ? tr.rec : tr.dom; question = 'Hur stor är chansen att avkomman får ' + f + '?'; target = gt => phen(gt) === f; }
+  } else if (type === 'inter') {
+    const g = ['RR', 'RV', 'VV']; P1 = rnd(g).split(''); P2 = rnd(g).split(''); order = a => a === 'R' ? 0 : 1;
+    phen = gt => gt === 'RR' ? 'röd' : gt === 'VV' ? 'vit' : 'rosa'; who = ['Planta 1', 'Planta 2']; title = 'Japansk underblomma: R = röd, V = vit. RV blir rosa.';
+    const f = rnd(['röd', 'rosa', 'vit']); question = 'Hur stor är chansen att en ny planta blir ' + f + '?'; target = gt => phen(gt) === f;
+  } else if (type === 'blod') {
+    const g = ['AA', 'A0', 'BB', 'B0', 'AB', '00']; P1 = rnd(g).split(''); P2 = rnd(g).split(''); order = a => 'AB0'.indexOf(a);
+    phen = gt => gt === 'AB' ? 'AB' : gt.includes('A') ? 'A' : gt.includes('B') ? 'B' : '0'; who = ['Mamma', 'Pappa']; title = 'ABO-blodgrupper: A och B är kodominanta, 0 är recessiv.';
+    const f = rnd(['A', 'B', 'AB', '0']); question = 'Hur stor är chansen att barnet får blodgrupp ' + f + '?'; target = gt => phen(gt) === f;
+  } else {
+    P1 = rnd([[XR, XR], [XR, Xr], [Xr, Xr]]); P2 = rnd([[XR, 'Y'], [Xr, 'Y']]); order = a => [XR, Xr, 'Y'].indexOf(a);
+    phen = gt => gt.includes('Y') ? (gt.includes(Xr) ? 'färgblind son' : 'frisk son') : (gt.split(Xr).length - 1 === 2 ? 'färgblind dotter' : gt.includes(Xr) ? 'dotter som är bärare' : 'frisk dotter');
+    who = ['Mamma', 'Pappa']; title = 'Färgblindhet: Xᴿ = normalt färgseende, Xʳ = färgblindhet (recessiv).';
+    const qt = rnd(['barn', 'son', 'dotter']);
+    if (qt === 'barn') { question = 'Hur stor är chansen att ett barn blir färgblint?'; target = gt => phen(gt).startsWith('färgblind'); }
+    else if (qt === 'son') { question = 'Om paret får en son, hur stor är chansen att han blir färgblind?'; qfilter = gt => gt.includes('Y'); target = gt => phen(gt) === 'färgblind son'; }
+    else { question = 'Om paret får en dotter, hur stor är chansen att hon blir bärare?'; qfilter = gt => !gt.includes('Y'); target = gt => phen(gt) === 'dotter som är bärare'; }
+  }
+  const comb = (a, b) => [a, b].sort((x, y) => order(x) - order(y)).join('');
+  const gtLabel = gt => gt;
+  const cells = []; for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) cells.push(comb(P1[i], P2[j]));
+  const opts = [...new Set(cells)];
+  const all = type === 'x' ? [XR + XR, XR + Xr, Xr + Xr, XR + 'Y', Xr + 'Y'] : type === 'blod' ? ['AA', 'A0', 'BB', 'B0', 'AB', '00'] : type === 'inter' ? ['RR', 'RV', 'VV'] : [];
+  if (type === 'mono') { const d = P1.concat(P2).find(a => a === a.toUpperCase()) || P1[0].toUpperCase(); const r = d.toLowerCase(); [d + d, d + r, r + r].forEach(g => all.push(g)); }
+  mix(all.filter(g => !opts.includes(g))).slice(0, 2).forEach(g => opts.push(g));
+  const p1 = P1.slice().sort((x, y) => order(x) - order(y)).join(''), p2 = P2.slice().sort((x, y) => order(x) - order(y)).join('');
+  body.append(el('p', { class: 'tip', text: title }),
+    el('p', { class: 'par' }, el('span', null, who[0] + ': ', el('b', { text: p1 }), ' (' + phen(p1) + ')'), el('span', { text: '×' }), el('span', null, who[1] + ': ', el('b', { text: p2 }), ' (' + phen(p2) + ')')),
+    el('h3', { text: 'Steg 1: Fyll i korsningsschemat' }),
+    el('p', { class: 'small soft', text: 'Könscellerna står i kanterna. Tryck på en ruta och sedan på rätt genotyp nedanför.' }));
+  const grid = el('div', { class: 'pun', style: 'grid-template-columns:repeat(3,1fr)' });
+  grid.append(el('div', { class: 'e' }), el('div', { class: 'h', text: P2[0] }), el('div', { class: 'h', text: P2[1] }));
+  let sel = null, filled = 0; const cellEls = [];
+  for (let i = 0; i < 2; i++) {
+    grid.append(el('div', { class: 'h', text: P1[i] }));
+    for (let j = 0; j < 2; j++) { const k = i * 2 + j; const c = el('div', { class: 'cell', role: 'button', tabindex: 0, 'aria-label': 'Ruta ' + (k + 1), onclick: () => { if (c.classList.contains('ok')) return; if (sel) sel.classList.remove('sel'); sel = c; c.classList.add('sel'); } }); c.dataset.k = k; cellEls.push(c); grid.append(c); }
+  }
+  const msg = el('p', { class: 'msg' });
+  const qbox = el('div', { hidden: true });
+  const chips = el('div', { class: 'pool' }, mix(opts).map(g => el('button', { text: gtLabel(g), onclick: e => {
+    if (!sel) { msg.textContent = 'Tryck först på en ruta i schemat.'; return; }
+    if (cells[+sel.dataset.k] === g) { sel.textContent = g; sel.classList.remove('sel'); sel.classList.add('ok'); sel = null; filled++; msg.textContent = 'Rätt! ✔';
+      if (filled === 4) { msg.textContent = 'Schemat är klart!'; qbox.hidden = false; } }
+    else { sel.classList.remove('no'); void sel.offsetWidth; sel.classList.add('no'); msg.textContent = 'Inte riktigt. Ta en allel från raden och en från kolumnen.'; }
+  } })));
+  const showAll = el('button', { class: 'btn', onclick: () => { cellEls.forEach((c, k) => { c.textContent = cells[k]; c.classList.add('ok'); }); filled = 4; qbox.hidden = false; msg.textContent = ''; } }, 'Visa schemat');
+  body.append(grid, chips, msg, el('div', { class: 'row' }, showAll));
+  // question
+  const base = qfilter ? cells.filter(qfilter) : cells;
+  const p = Math.round(base.filter(target).length / base.length * 100);
+  const res = el('div', { class: 'ans', hidden: true });
+  const qb = el('div', { class: 'pool' }, [0, 25, 50, 75, 100].map(v => el('button', { text: v + ' %', onclick: e => {
+    if (!res.hidden) return;
+    const ok = v === p; e.currentTarget.classList.add(ok ? 'right' : 'wrong');
+    const list = cells.map(gt => gt + ' = ' + phen(gt)).join(', ');
+    res.innerHTML = ''; res.append(el('p', null, el('b', { text: ok ? 'Rätt! ' : 'Svaret är ' + p + ' %. ' }), 'De fyra rutorna: ' + list + '.'),
+      qfilter ? el('p', { text: 'Här räknar du bara de rutor som är ' + (type === 'x' && question.includes('son') ? 'söner (har Y)' : 'döttrar (har två X)') + '.' }) : null);
+    res.hidden = false; markDone('korsning');
+  } })));
+  qbox.append(el('h3', { text: 'Steg 2: ' + question }), qb, res);
+  body.append(qbox, el('div', { class: 'row', style: 'margin-top:.8rem' }, el('button', { class: 'btn main', onclick: () => { body.innerHTML = ''; monoRound(body, type); } }, 'Ny korsning')));
+}
+function diRound(body) {
+  const sc = rnd([['GgRr', 'GgRr'], ['GGRR', 'ggrr'], ['GgRr', 'ggrr'], ['GgRr', 'GgRr']]);
+  const gam = g => { const out = []; [g[0], g[1]].forEach(a => [g[2], g[3]].forEach(b => out.push(a + b))); return out; };
+  const ph = gt => (gt.includes('G') ? 'gul' : 'grön') + ' och ' + (gt.includes('R') ? 'slät' : 'skrynklig');
+  const comb = (a, b) => { const G = [a[0], b[0]].sort((x, y) => (x === 'g') - (y === 'g')).join(''); const R = [a[1], b[1]].sort((x, y) => (x === 'r') - (y === 'r')).join(''); return G + R; };
+  body.append(el('p', { class: 'tip', text: 'Ärtor: G = gul (dominant), g = grön. R = slät (dominant), r = skrynklig.' }),
+    el('p', { class: 'par' }, el('span', null, 'Planta 1: ', el('b', { text: sc[0] }), ' (' + ph(sc[0]) + ')'), el('span', { text: '×' }), el('span', null, 'Planta 2: ', el('b', { text: sc[1] }), ' (' + ph(sc[1]) + ')')),
+    el('h3', { text: 'Steg 1: Vilka könsceller kan plantorna bilda?' }),
+    el('p', { class: 'small soft', text: 'Varje könscell får en allel från varje genpar. Markera alla som är möjliga.' }));
+  const step2 = el('div', { hidden: true });
+  let okCount = 0;
+  sc.forEach((g, pi) => {
+    const real = [...new Set(gam(g))]; const chosen = new Set();
+    const msg = el('span', { class: 'small' });
+    const opts = el('div', { class: 'pool' }, ['GR', 'Gr', 'gR', 'gr', 'Gg', 'Rr'].map(o => { const b = el('button', { text: o, onclick: () => { chosen.has(o) ? chosen.delete(o) : chosen.add(o); b.style.borderColor = chosen.has(o) ? '#3878B8' : ''; b.style.background = chosen.has(o) ? 'rgba(56,120,184,.15)' : ''; } }); return b; }));
+    const chk = el('button', { class: 'btn', onclick: () => {
+      const ok = real.length === chosen.size && real.every(r => chosen.has(r));
+      msg.textContent = ok ? '✔ Rätt!' : 'Inte riktigt. ' + g + ' kan bilda: ' + real.join(', ') + '.';
+      msg.style.color = ok ? 'var(--ok)' : 'var(--bad)'; chk.disabled = true; okCount++; if (okCount === 2) { step2.hidden = false; buildGrid(); }
+    } }, 'Kolla');
+    body.append(el('p', null, el('b', { text: 'Planta ' + (pi + 1) + ' (' + g + '):' })), opts, el('div', { class: 'row' }, chk, msg));
+  });
+  const buildGrid = () => {
+    const g1 = gam(sc[0]), g2 = gam(sc[1]);
+    const grid = el('div', { class: 'pun', style: 'grid-template-columns:repeat(5,1fr);max-width:30rem' });
+    grid.append(el('div', { class: 'e' }), ...g2.map(x => el('div', { class: 'h', text: x })));
+    const cells = [];
+    g1.forEach(a => { grid.append(el('div', { class: 'h', text: a })); g2.forEach(b => { const c = comb(a, b); cells.push(c); grid.append(el('div', { text: c, style: 'font-size:.9rem' })); }); });
+    const kinds = ['gul och slät', 'gul och skrynklig', 'grön och slät', 'grön och skrynklig'];
+    const f = rnd(kinds); const n = cells.filter(c => ph(c) === f).length;
+    const res = el('div', { class: 'ans', hidden: true });
+    const cand = mix([...new Set([n, 0, 1, 3, 4, 9, 16].filter(x => x !== n))]).slice(0, 4).concat([n]).sort((a, b) => a - b);
+    const counts = kinds.map(k => k + ': ' + cells.filter(c => ph(c) === k).length).join(', ');
+    step2.append(el('h3', { text: 'Steg 2: Korsningsschemat' }), el('div', { style: 'overflow-x:auto' }, grid),
+      el('h3', { text: 'Steg 3: Hur många av de 16 rutorna blir ' + f + '?' }),
+      el('div', { class: 'pool' }, cand.map(v => el('button', { text: v + ' av 16', onclick: e => {
+        if (!res.hidden) return; e.currentTarget.classList.add(v === n ? 'right' : 'wrong');
+        res.append(el('p', null, el('b', { text: v === n ? 'Rätt! ' : 'Svaret är ' + n + ' av 16. ' }), 'Fördelningen: ' + counts + '.'),
+          sc[0] === 'GgRr' && sc[1] === 'GgRr' ? el('p', { text: 'Det är det klassiska klyvningstalet vid dihybrid nedärvning: 9:3:3:1.' }) : null);
+        res.hidden = false; markDone('korsning');
+      } }))), res);
+  };
+  body.append(step2, el('div', { class: 'row', style: 'margin-top:.8rem' }, el('button', { class: 'btn main', onclick: () => { body.innerHTML = ''; diRound(body); } }, 'Ny korsning')));
+}
+
+/* ===================== Mutationslabbet ===================== */
+const BASES = 'UCAG', AAS = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG';
+const CODE = {}; let ci = 0; for (const a of BASES) for (const b of BASES) for (const c of BASES) CODE[a + b + c] = AAS[ci++];
+const AAN = { F: 'Fenylalanin (Phe)', L: 'Leucin (Leu)', S: 'Serin (Ser)', Y: 'Tyrosin (Tyr)', '*': 'Stopp', C: 'Cystein (Cys)', W: 'Tryptofan (Trp)', P: 'Prolin (Pro)', H: 'Histidin (His)', Q: 'Glutamin (Gln)', R: 'Arginin (Arg)', I: 'Isoleucin (Ile)', M: 'Metionin (Met)', T: 'Treonin (Thr)', N: 'Asparagin (Asn)', K: 'Lysin (Lys)', V: 'Valin (Val)', A: 'Alanin (Ala)', D: 'Asparaginsyra (Asp)', E: 'Glutaminsyra (Glu)', G: 'Glycin (Gly)' };
+const short = a => a === '*' ? 'Stopp' : AAN[a].slice(-4, -1);
+const COMP = { A: 'T', U: 'A', G: 'C', C: 'G' };
+const tmpl = m => m.split('').map(b => COMP[b]).join('');
+const trip = s => s.match(/.{1,3}/g) || [];
+function translate(m) { const out = []; for (const c of trip(m)) { if (c.length < 3) break; const a = CODE[c]; out.push(a); if (a === '*') break; } return out; }
+function codonTable() {
+  const t = el('table');
+  t.append(el('tr', null, el('th', { text: '1:a \\ 2:a' }), ...BASES.split('').map(b => el('th', { text: b }))));
+  for (const a of BASES) {
+    const tr = el('tr', null, el('th', { text: a }));
+    for (const b of BASES) tr.append(el('td', null, ...BASES.split('').map(c => el('div', { text: a + b + c + ' ' + short(CODE[a + b + c]) }))));
+    t.append(tr);
+  }
+  return el('div', { class: 'ctab' }, t);
+}
+function runMutlab(card) {
+  const body = el('div');
+  const go = sickle => { body.innerHTML = ''; mutRound(body, sickle); };
+  card.append(el('p', { text: 'Du får en bit av en gen i form av DNA:ts mallsträng. Gör som cellen: transkribera till mRNA, översätt till aminosyror och se sedan vad en mutation ställer till med.' }),
+    el('div', { class: 'row' }, el('button', { class: 'btn', onclick: () => go(false) }, 'Slumpad gen'), el('button', { class: 'btn', onclick: () => go(true) }, 'Sicklecellanemi')), body);
+  go(false);
+  // meningsdemo
+  const sent = 'HANSERSJUGRÅFÅR';
+  const box = el('div'); let cur = sent;
+  const draw = () => {
+    box.innerHTML = '';
+    box.append(el('div', { class: 'letters' }, cur.split('').map((ch, i) => el('button', { text: ch, 'aria-label': 'Ta bort ' + ch, onclick: () => { cur = cur.slice(0, i) + cur.slice(i + 1); draw(); } }))),
+      el('p', { class: 'words', text: (cur.match(/.{1,3}/g) || []).join(' ') }),
+      el('button', { class: 'btn', onclick: () => { cur = sent; draw(); } }, 'Återställ'));
+  };
+  draw();
+  card.append(el('h3', { text: 'Testa själv: HAN SER SJU GRÅ FÅR' }), el('p', { class: 'small', text: 'Tryck på en bokstav för att ta bort den. Meningen läses fortfarande tre bokstäver i taget, precis som kodon. Se vad som händer med resten.' }), box);
+}
+function mutRound(body, sickle) {
+  let m;
+  if (sickle) m = 'AUGGUGCACCUGACUCCUGAGGAG';
+  else { const nonstop = Object.keys(CODE).filter(c => CODE[c] !== '*' && c !== 'AUG'); m = 'AUG' + [0, 1, 2, 3].map(() => rnd(nonstop)).join('') + rnd(['UAA', 'UAG', 'UGA']); }
+  const T = tmpl(m), cods = trip(m), prot = translate(m);
+  body.append(el('h3', { text: 'Steg 1: Transkribera' }),
+    el('p', { text: 'DNA:ts mallsträng (läses från 3\' till 5\'):' }), el('p', { class: 'dna', text: trip(T).join(' ') }),
+    el('p', { class: 'small soft', text: 'mRNA blir komplementärt till mallsträngen: A → U, T → A, G → C, C → G.' }));
+  const inp = el('input', { type: 'text', 'aria-label': 'mRNA', placeholder: 'Skriv mRNA, till exempel AUG …', autocapitalize: 'characters', autocomplete: 'off', spellcheck: 'false' });
+  const m1 = el('p', { class: 'msg' });
+  const s2 = el('div', { hidden: true }), s3 = el('div', { hidden: true });
+  body.append(inp, el('div', { class: 'row', style: 'margin-top:.4rem' },
+    el('button', { class: 'btn', onclick: () => { const v = inp.value.toUpperCase().replace(/[^AUGCT]/g, ''); if (v === m) { m1.textContent = '✔ Rätt!'; s2.hidden = false; } else if (v.includes('T')) m1.textContent = 'RNA har inget T. Byt till U.'; else { let i = 0; while (i < v.length && v[i] === m[i]) i++; m1.textContent = i < v.length || v.length < m.length ? 'Nästan. Kolla bas nummer ' + (i + 1) + '.' : 'Inte riktigt.'; } } }, 'Kolla'),
+    el('button', { class: 'btn', onclick: () => { inp.value = cods.join(' '); m1.textContent = 'Här är svaret.'; s2.hidden = false; } }, 'Visa svaret')), m1);
+  // steg 2
+  const opts = Object.keys(AAN).sort((a, b) => AAN[a].localeCompare(AAN[b], 'sv'));
+  const sels = prot.map((a, i) => { const s = el('select', { 'aria-label': 'Aminosyra för ' + cods[i] }, el('option', { value: '', text: 'Välj…' }), opts.map(o => el('option', { value: o, text: AAN[o] }))); return s; });
+  const tabBox = el('div', { hidden: true }, codonTable());
+  const m2 = el('p', { class: 'msg' });
+  s2.append(el('h3', { text: 'Steg 2: Översätt med den genetiska koden' }),
+    el('p', { class: 'small soft', text: sickle ? 'Det här är början av genen för hemoglobin. Översätt varje kodon.' : 'Översätt varje kodon. Translationen slutar vid stoppkodonet.' }),
+    el('div', { class: 'cods' }, sels.map((s, i) => el('label', null, cods[i], s))),
+    el('div', { class: 'row' }, el('button', { class: 'btn', onclick: () => { let ok = 0; sels.forEach((s, i) => { const r = s.value === prot[i]; s.classList.toggle('ok', r); s.classList.toggle('no', !r && s.value !== ''); if (r) ok++; }); m2.textContent = ok === prot.length ? '✔ Alla rätt!' : ok + ' av ' + prot.length + ' rätt.'; if (ok === prot.length) { s3.hidden = false; } } }, 'Kolla'),
+      el('button', { class: 'btn', onclick: () => { tabBox.hidden = !tabBox.hidden; } }, 'Visa kodontabellen'),
+      el('button', { class: 'btn', onclick: () => { sels.forEach((s, i) => { s.value = prot[i]; s.classList.add('ok'); }); s3.hidden = false; } }, 'Visa svaret')), m2, tabBox);
+  // steg 3: mutation
+  let mm, kind, pos;
+  if (sickle) { mm = m.slice(0, 19) + 'U' + m.slice(20); kind = 1; pos = 19; }
+  else {
+    const want = rnd(['tyst', 'ny', 'stopp', 'forsk']);
+    const subs = []; for (let i = 3; i < m.length - 3; i++) for (const b of 'UCAG') if (b !== m[i]) { const x = m.slice(0, i) + b + m.slice(i + 1); const ci2 = Math.floor(i / 3) * 3; const a0 = CODE[m.slice(ci2, ci2 + 3)], a1 = CODE[x.slice(ci2, ci2 + 3)]; subs.push({ x, i, k: a1 === a0 ? 0 : a1 === '*' ? 2 : 1 }); }
+    let pickS = null;
+    if (want !== 'forsk') { const k = { tyst: 0, ny: 1, stopp: 2 }[want]; const c = subs.filter(s => s.k === k); pickS = c.length ? rnd(c) : rnd(subs.filter(s => s.k === 1)); }
+    if (pickS) { mm = pickS.x; kind = pickS.k; pos = pickS.i; }
+    else { pos = 3 + Math.floor(Math.random() * (m.length - 7)); mm = m.slice(0, pos) + m.slice(pos + 1); kind = 3; }
+  }
+  const TM = tmpl(mm);
+  const markT = (kind === 3)
+    ? el('p', { class: 'dna', html: trip(T).join(' ').replace(/ /g, '·').split('').map((ch, idx) => { const realIdx = idx - Math.floor(idx / 4); return (idx % 4 !== 3 && realIdx === pos) ? '<mark>' + ch + '</mark>' : ch; }).join('').replace(/·/g, ' ') })
+    : el('p', { class: 'dna', html: trip(TM).join(' ').split('').map((ch, idx) => { const realIdx = idx - Math.floor(idx / 4); return (idx % 4 !== 3 && realIdx === pos) ? '<mark>' + ch + '</mark>' : ch; }).join('') });
+  const KINDS = ['Tyst mutation – samma aminosyra', 'Ny aminosyra', 'För tidigt stoppkodon', 'Parallellförskjutning'];
+  const res = el('div', { class: 'ans', hidden: true });
+  s3.append(el('h3', { text: 'Steg 3: En mutation!' }),
+    el('p', { text: kind === 3 ? 'Den markerade basen försvinner ur mallsträngen:' : 'En bas i mallsträngen byts ut (markerad):' }), markT,
+    el('p', { text: 'Vad blir följden för proteinet? Tänk först, svara sedan.' }),
+    el('div', { class: 'pool' }, KINDS.map((k, i) => el('button', { text: k, onclick: e => {
+      if (!res.hidden) return; e.currentTarget.classList.add(i === kind ? 'right' : 'wrong');
+      const np = translate(mm); const len = Math.max(prot.length, np.length);
+      const rowP = (arr, other) => el('span', null, ...Array.from({ length: len }, (_, j) => arr[j] ? el('span', { class: 'aa' + (arr[j] !== other[j] ? ' diff' : ''), text: short(arr[j]) }) : null));
+      const expl = ['Kodonet ändrades men betyder fortfarande samma aminosyra, eftersom de flesta aminosyror har flera kodon. Proteinet blir likadant.',
+        sickle ? 'GAG blir GUG i mRNA: glutaminsyra byts mot valin. Hemoglobinet får en annan form och de röda blodkropparna blir skäreformade.' : 'Kodonet betyder nu en annan aminosyra. Beroende på vilken det är kan proteinet fungera nästan som vanligt eller förlora sin funktion.',
+        'Kodonet har blivit ett stoppkodon, så proteinet blir för kort och fungerar troligen inte.',
+        'När en bas försvinner förskjuts läsramen. Alla kodon efter mutationen läses fel, precis som HAN SES JUG RÅF ÅR.'][kind];
+      res.append(el('p', null, el('b', { text: i === kind ? 'Rätt! ' : 'Svaret är: ' + KINDS[kind] + '. ' }), expl),
+        el('div', { class: 'cmp' }, el('span', { class: 'lbl', text: 'Före:' }), rowP(prot, translate(mm)), el('span', { class: 'lbl', text: 'Efter:' }), rowP(translate(mm), prot)),
+        el('p', { class: 'small soft', text: 'Nytt mRNA: ' + trip(mm).join(' ') }));
+      res.hidden = false; markDone('mutlab');
+    } }))), res);
+  body.append(s2, s3);
+}
+
+/* ===================== Släkttavledetektiven ===================== */
+function pedSvg(c) {
+  const pos = {}; c.ind.forEach(([id, sx, aff, g, x]) => pos[id] = { sx, aff, x: x + 30, y: 50 + g * 115 });
+  const W = Math.max(...c.ind.map(i => i[4])) + 90, H = 50 + Math.max(...c.ind.map(i => i[3])) * 115 + 50;
+  let s = '';
+  c.cpl.forEach(([a, b, kids]) => {
+    const A = pos[a], B = pos[b]; const mx = (A.x + B.x) / 2, y = A.y, sy = y + 58;
+    s += `<line x1="${A.x}" y1="${y}" x2="${B.x}" y2="${y}" stroke="#1D2B3A" stroke-width="2"/><line x1="${mx}" y1="${y}" x2="${mx}" y2="${sy}" stroke="#1D2B3A" stroke-width="2"/>`;
+    const xs = kids.map(k => pos[k].x).concat([mx]);
+    s += `<line x1="${Math.min(...xs)}" y1="${sy}" x2="${Math.max(...xs)}" y2="${sy}" stroke="#1D2B3A" stroke-width="2"/>`;
+    kids.forEach(k => s += `<line x1="${pos[k].x}" y1="${sy}" x2="${pos[k].x}" y2="${pos[k].y - 18}" stroke="#1D2B3A" stroke-width="2"/>`);
+  });
+  for (const id in pos) { const p = pos[id]; const f = p.aff ? '#3A4A5C' : '#fff';
+    s += p.sx === 'm' ? `<rect x="${p.x - 17}" y="${p.y - 17}" width="34" height="34" fill="${f}" stroke="#1D2B3A" stroke-width="2.5"/>` : `<circle cx="${p.x}" cy="${p.y}" r="18" fill="${f}" stroke="#1D2B3A" stroke-width="2.5"/>`; }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;height:auto;display:block;margin:0 auto" role="img" aria-label="Släkttavla">${s}</svg>`;
+}
+function runSlakt(card) {
+  let i = 0, right = 0, tries = 0; const body = el('div'); const order = mix(D.PED.map((_, k) => k));
+  const show = () => {
+    const c = D.PED[order[i % order.length]]; body.innerHTML = '';
+    const res = el('div', { class: 'ans', hidden: true });
+    body.append(el('p', null, el('b', { text: 'Släkt ' + (i % order.length + 1) + ' av ' + order.length }), '. Hur ärvs sjukdomen i den här släkten?'),
+      el('div', { class: 'ped', html: pedSvg(c) }),
+      el('div', { class: 'legend' }, el('span', { text: '□ man' }), el('span', { text: '○ kvinna' }), el('span', { text: '■ ● sjuk' })),
+      el('div', { class: 'pool' }, D.PED_OPTS.map((o, k) => el('button', { text: o, onclick: e => {
+        if (!res.hidden) return; tries++; if (k === c.ans) right++;
+        e.currentTarget.classList.add(k === c.ans ? 'right' : 'wrong');
+        res.append(el('p', null, el('b', { text: k === c.ans ? 'Rätt! ' : 'Svaret är: ' + D.PED_OPTS[c.ans] + '. ' }), c.why)); res.hidden = false;
+        if (tries >= 3) markDone('slakt');
+      } }))), res,
+      el('div', { class: 'row', style: 'margin-top:.6rem' }, el('button', { class: 'btn main', onclick: () => { i++; show(); } }, 'Nästa släkt'), el('span', { class: 'count', text: right + ' rätt av ' + tries })));
+  };
+  card.append(el('div', { class: 'tip' }, el('b', { text: 'Ledtrådar: ' }),
+    'Friska föräldrar med sjukt barn betyder recessivt. Finns sjukdomen i varje generation och har varje sjuk en sjuk förälder är den troligen dominant. Drabbas nästan bara män, via friska mammor, är den troligen X-bunden. En sjuk dotter till en frisk pappa utesluter X-bunden recessiv.'), body);
+  show();
+}
+
+/* ===================== Begrepp ===================== */
+const GN = { his: 'Verb och satser', del: 'Huvudsats och bisats', arv: 'Fundament och ordföljd', epi: 'Höger/vänstertung', gte: 'Fel och stil' };
+function viewBegrepp() {
+  const v = el('div');
+  v.append(topnav('begrepp'), el('h1', { text: 'Begrepp' }), el('p', { class: 'soft', text: 'Alla begrepp från bokens begreppsrutor, s. 146–219.' }));
+  const card = el('div', { class: 'card' });
+  const filt = el('div', { class: 'tabs' }), modes = el('div', { class: 'tabs' }), body = el('div');
+  let g = null, mode = 'list';
+  const set = () => B().length;
+  const B = () => D.B.filter(b => !g || b[3] === g);
+  [['Alla', null]].concat(Object.entries(GN).map(([k, n]) => [n, k])).forEach(([n, k]) => filt.append(el('button', { class: k ? kc(k) : '', onclick: () => { g = k; draw(); } }, n)));
+  [['list', 'Läs listan'], ['match', 'Para ihop'], ['guess', 'Gissa begreppet'], ['card', 'Begreppskort']].forEach(([k, n]) => modes.append(el('button', { onclick: () => { mode = k; draw(); } }, n)));
+  const draw = () => {
+    [...filt.children].forEach((b, k) => b.setAttribute('aria-pressed', (k === 0 ? g === null : Object.keys(GN)[k - 1] === g) ? 'true' : 'false'));
+    [...modes.children].forEach((b, k) => b.setAttribute('aria-pressed', ['list', 'match', 'guess', 'card'][k] === mode ? 'true' : 'false'));
+    body.innerHTML = '';
+    ({ list: bList, match: bMatch, guess: bGuess, card: bCards })[mode](body, B());
+  };
+  card.append(el('p', { class: 'small soft', style: 'margin:0', text: 'Område' }), filt, el('p', { class: 'small soft', style: 'margin:0', text: 'Läge' }), modes, body);
+  v.append(card); draw();
+  return v;
+}
+function bList(body, list) {
+  let last = '';
+  list.forEach(([t, f, e, c]) => {
+    if (c !== last) { last = c; body.append(el('h3', { text: GN[c] })); }
+    body.append(el('div', { class: 'term ' + kc(c) }, el('h3', null, el('span', { text: t }), sayBtn(t + '. ' + f + ' Exempel: ' + e, 'Lyssna på ' + t)), el('p', { text: f }), el('p', { class: 'exm', text: 'Exempel: ' + e })));
+  });
+}
+function bMatch(body, list) {
+  const L = el('div'), R = el('div'), msg = el('p', { class: 'msg' });
+  let pick = null, left = 0;
+  const round = () => {
+    L.innerHTML = ''; R.innerHTML = ''; msg.textContent = ''; pick = null;
+    const set = mix(list).slice(0, 5); left = set.length;
+    set.forEach(b => { const x = el('button', { text: b[0], onclick: () => { if (x.classList.contains('done')) return; if (pick) pick.classList.remove('sel'); pick = x; x.classList.add('sel'); } }); x.dataset.k = b[0]; L.append(x); });
+    mix(set).forEach(b => { const y = el('button', { text: b[1], onclick: () => {
+      if (!pick || y.classList.contains('done')) return;
+      if (pick.dataset.k === b[0]) { pick.classList.remove('sel'); pick.classList.add('done'); y.classList.add('done'); pick = null; left--; msg.textContent = left ? 'Rätt! ✔' : 'Alla rätt! 🎉 Tryck på ”Nya begrepp”.'; }
+      else { y.classList.remove('wrong'); void y.offsetWidth; y.classList.add('wrong'); msg.textContent = 'Inte riktigt – försök igen.'; }
+    } }); R.append(y); });
+  };
+  body.append(el('p', { text: 'Tryck på ett begrepp och sedan på rätt förklaring.' }), el('div', { class: 'match' }, L, R), msg, el('button', { class: 'btn', onclick: round }, 'Nya begrepp'));
+  round();
+}
+function bGuess(body, list) {
+  const q = el('div', { class: 'exq' }), o = el('div', { class: 'pool' }), msg = el('p', { class: 'msg' }), sc = el('span', { class: 'count' });
+  let order = mix(list), i = 0, right = 0, tries = 0;
+  const next = () => {
+    const b = order[i % order.length]; msg.textContent = ''; q.textContent = b[2]; o.innerHTML = ''; let first = true;
+    const same = D.B.filter(x => x !== b && x[3] === b[3]), other = D.B.filter(x => x !== b && x[3] !== b[3]);
+    const w = mix(same).slice(0, 2); const opts = mix([b].concat(w, mix(other).slice(0, 3 - w.length)));
+    opts.forEach(x => o.append(el('button', { text: x[0], onclick: e => {
+      if (x === b) { e.currentTarget.classList.add('right'); msg.textContent = 'Rätt! ' + b[0] + ': ' + b[1]; if (first) right++; tries++; sc.textContent = right + ' rätt på första försöket av ' + tries; o.querySelectorAll('button').forEach(z => z.disabled = true); }
+      else { first = false; e.currentTarget.classList.add('wrong'); e.currentTarget.disabled = true; msg.textContent = 'Inte riktigt – prova ett annat.'; }
+    } })));
+  };
+  body.append(el('p', { text: 'Här står ett exempel. Vilket begrepp hör det till?' }), q, o, msg, el('div', { class: 'row' }, el('button', { class: 'btn', onclick: () => { i++; next(); } }, 'Nästa'), sc));
+  next();
+}
+function bCards(body, list) {
+  let onlyWeak = false, cards = [], i = 0, flipped = false;
+  const card = el('button', { class: 'fcard', 'aria-live': 'polite' }), cnt = el('span', { class: 'count' });
+  const grade = el('div', { class: 'grade' });
+  const tog = el('button', { class: 'btn', onclick: () => { onlyWeak = !onlyWeak; tog.textContent = onlyWeak ? 'Visa alla kort' : 'Bara de jag inte kan'; build(); } }, 'Bara de jag inte kan');
+  const build = () => { cards = mix(list.filter(b => !onlyWeak || S.cards[b[0]] !== 1)); i = 0; flipped = false; show(); };
+  const show = () => {
+    grade.innerHTML = '';
+    if (!cards.length) { card.innerHTML = ''; card.append('Inga kort kvar här. Snyggt! 🎉'); cnt.textContent = ''; return; }
+    const [t, f, e, c] = cards[i]; card.className = 'fcard ' + kc(c); card.innerHTML = '';
+    card.append(flipped ? f : t, el('small', { text: flipped ? t : 'Tryck för att vända' }));
+    cnt.textContent = (i + 1) + ' av ' + cards.length;
+    if (flipped) grade.append(...[['Kunde', 1, 'g0'], ['Kunde inte', 0, 'g2']].map(([l, v, cl]) => el('button', { class: cl + (S.cards[t] === v ? ' on' : ''), onclick: () => { S.cards[t] = v; save(); i = (i + 1) % cards.length; flipped = false; show(); } }, l)));
+  };
+  card.addEventListener('click', () => { flipped = !flipped; show(); });
+  body.append(el('p', { text: 'Säg förklaringen högt, vänd sedan kortet. Markera om du kunde.' }), card, grade,
+    el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: () => { i = (i - 1 + cards.length) % cards.length; flipped = false; show(); } }, 'Förra'),
+      el('button', { class: 'btn', onclick: () => { i = (i + 1) % cards.length; flipped = false; show(); } }, 'Nästa'), tog, sayBtn(() => cards[i] ? (flipped ? cards[i][0] + '. ' + cards[i][1] : cards[i][0]) : '', 'Läs upp kortet'), cnt));
+  build();
+}
+
+/* ===================== Du och dina gener ===================== */
+function viewHemma() {
+  const v = el('div', { class: kc('epi') });
+  v.append(topnav('hemma'));
+  v.append(el('div', { class: 'hero ' + kc('epi') }, el('h1', { text: 'Du och dina gener' }),
+    el('p', { text: 'Genetik handlar inte bara om ärtor och bananflugor. Här kopplar du det du läst till dig själv och till hur forskare tar reda på saker. Alla uppgifter är frivilliga.' })));
+
+  // 1 Två sorters arv
+  v.append(el('div', { class: 'card k ' + kc('epi') },
+    el('h2', { text: 'Två sorters arv' }),
+    el('p', { text: 'Alla människor bär på två sorters arv. Det ena är generna, som vi får från våra biologiska föräldrar. Det andra är miljön vi växer upp i: språket, maten, vanorna, sporterna, sättet att prata med varandra och allt vi lär oss av familj och vänner.' }),
+    el('p', { text: 'På s. 193–199 i boken ser du att miljön inte bara formar oss ”utanpå”. Den påverkar också vilka gener som slås på och av, genom epigenetik. Kost, sömn, träning, stress och vilka vi har omkring oss lämnar alltså spår i hur våra celler arbetar.' }),
+    el('h3', { text: 'Sortera: gener, miljö eller både och?' })));
+  const sc = el('div', { class: 'card' }); v.append(sc); runSort(sc, 's_hemma', { quiet: true });
+  v.append(el('div', { class: 'card' }, el('h3', { style: 'margin-top:0', text: 'Fundera' }),
+    el('p', { text: 'Välj två av dina egna egenskaper: en som du tror mest beror på generna och en som du tror mest har formats av hur du har vuxit upp. Förklara varför med begrepp från boken, till exempel genotyp, fenotyp, polygen och epigenetik.' }),
+    textArea('hm-arv', 'Min första egenskap är… Jag tror att den beror mest på… eftersom…', 5)));
+
+  // 2 Adoptionsstudier
+  const quiz = [
+    ['Forskare jämför adopterade med både deras biologiska föräldrar och deras adoptivföräldrar. Varför är det en så användbar metod?',
+     ['Barnet delar gener med de biologiska föräldrarna men miljö med adoptivfamiljen, så man kan skilja på generna och miljöns betydelse.', 'Adopterade har andra sorters gener än andra människor.', 'Adoptivföräldrar och barn har samma DNA.'], 0,
+     'Precis. I de flesta familjer delar barn både gener och miljö med sina föräldrar, och då går det inte att säga vad som beror på vad. I en adoptionsstudie är de två sorterna av arv åtskilda.'],
+    ['I en studie liknar adopterade sina adoptivföräldrar mycket i hur mycket de motionerar. Vad tyder det på?',
+     ['Att miljön, alltså vanorna i familjen, spelar stor roll för motionsvanor.', 'Att motionsvanor bara beror på gener.', 'Att studien måste vara felgjord.'], 0,
+     'Ja. När barnet liknar den familj det vuxit upp i, utan att dela gener med den, pekar det på att miljön har stor betydelse för just den egenskapen.'],
+    ['Adopterade liknar ofta sina biologiska föräldrar i kroppslängd, även om de vuxit upp på helt annat håll. Vad tyder det på?',
+     ['Att generna har stor betydelse för längd, alltså hög heritabilitet.', 'Att miljön inte påverkar längden alls.', 'Att längd är en monogen egenskap.'], 0,
+     'Rätt. Men kom ihåg s. 198: heritabiliteten för längd är hög just när alla får tillräckligt med mat. Miljön påverkar fortfarande, och längd är polygen.']
+  ];
+  const qc = el('div', { class: 'card k ' + kc('epi') }, el('h2', { text: 'Adoptionsstudier – ett smart sätt att skilja gener från miljö' }),
+    el('p', { text: 'Boken beskriver tvillingstudier (s. 198–199). Ett annat klassiskt sätt att räkna ut heritabilitet är adoptionsstudier. De nordiska länderna har stora register, så svenska och danska forskare har gjort många sådana studier, om allt från längd till risken för olika sjukdomar.' }));
+  quiz.forEach(([q, opts, ans, why], i) => {
+    const res = el('div', { class: 'ans', hidden: true }, el('p', { text: why }));
+    const order = mix(opts.map((_, k) => k));
+    qc.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: (i + 1) + '. ' + q }),
+      el('div', { class: 'pool' }, order.map(k => el('button', { text: opts[k], onclick: e => { if (!res.hidden) return; e.currentTarget.classList.add(k === ans ? 'right' : 'wrong'); if (k !== ans) res.prepend(el('p', null, el('b', { text: 'Svaret är: ' + opts[ans] }))); res.hidden = false; } }))), res));
+  });
+  v.append(qc);
+
+  // 3 Kroppen som labb
+  const a = el('input', { type: 'number', inputmode: 'decimal', 'aria-label': 'Resultat vecka 1' }), b = el('input', { type: 'number', inputmode: 'decimal', 'aria-label': 'Resultat efter fyra veckor' });
+  a.value = S.t['hm-t1'] || ''; b.value = S.t['hm-t2'] || '';
+  const out = el('p', { class: 'msg' });
+  const calc = () => { S.t['hm-t1'] = a.value; S.t['hm-t2'] = b.value; save(); const x = parseFloat(a.value), y = parseFloat(b.value);
+    if (x > 0 && y > 0) { const pct = Math.round((y - x) / x * 100); out.textContent = 'Förändring: ' + (pct > 0 ? '+' : '') + pct + ' %. ' + (pct >= 20 ? 'Det ser ut som att du svarar starkt på den här träningen.' : pct >= 8 ? 'En tydlig förbättring.' : 'En liten förändring. Kanske svarar du bättre på en annan sorts träning?'); } };
+  a.addEventListener('input', calc); b.addEventListener('input', calc);
+  v.append(el('div', { class: 'card k ' + kc('epi') }, el('h2', { text: 'Din kropp som labb' }),
+    el('p', { text: 'På s. 199 står att människor svarar väldigt olika på träning, och att ungefär hälften av skillnaden beror på gener. Testa själv under provperioden:' }),
+    el('ol', null, el('li', { text: 'Välj något mätbart, till exempel antal armhävningar i rad, tid på en sträcka eller vilopuls.' }),
+      el('li', { text: 'Mät nu och skriv in resultatet.' }), el('li', { text: 'Träna samma sak två–tre gånger i veckan i fyra veckor och mät igen.' })),
+    el('div', { class: 'row' }, el('label', { style: 'flex:1;min-width:9rem' }, 'Vecka 1', a), el('label', { style: 'flex:1;min-width:9rem' }, 'Efter fyra veckor', b)), out,
+    el('p', { class: 'small soft', text: 'Koppla till boken: vilka gener uttrycks mer när du tränar? (Tips: p53 och mitokondrierna på s. 175, och proteinet som flyttas till cellmembranet på s. 198.)' })));
+  calc();
+
+  // 4 Blodgrupp
+  v.append(el('div', { class: 'card k ' + kc('epi') }, el('h2', { text: 'Din blodgrupp' }),
+    el('p', { text: 'Vet du vilken blodgrupp du har? Har du lämnat blodprov kan den ibland stå i din journal på 1177, och blodgivare (från 18 år) får alltid veta sin. Blodgruppen är ett bra exempel på kodominans och på en egenskap som nästan bara styrs av generna.' }),
+    el('p', null, 'Om du har blodgrupp A, vilka genotyper kan du ha? Och blodgrupp 0? Testa sedan ', el('a', { href: '#x-korsning', text: 'korsningsschema-tränaren' }), ' med blodgrupper.'),
+    textArea('hm-blod', 'Blodgrupp A kan vara… Blodgrupp 0 måste vara… eftersom…', 3)));
+
+  // 5 DNA-tester
+  v.append(el('div', { class: 'card k ' + kc('epi') }, el('h2', { text: 'DNA-tester och ursprung' }),
+    el('p', { text: 'På s. 218–219 tar boken upp kommersiella DNA-tester. Miljontals människor har gjort sådana tester, till exempel för att lära sig mer om var deras förfäder kommer ifrån, för att hitta okända släktingar eller för att få veta något om sina sjukdomsrisker. Bland dem finns många som är adopterade eller som har okänd släkt på något håll.' }),
+    el('p', { text: 'Det väcker stora frågor: Vem äger informationen? Vad händer om man får veta något man inte var beredd på? Och påverkar ditt test dina släktingar, som inte själva har valt att testa sig?' }),
+    el('p', { text: 'Fundera på vad du tycker. Du behöver inte skriva om dig själv, det räcker att resonera allmänt.' }),
+    textArea('hm-dna', 'Fördelar med kommersiella DNA-tester… Risker… Det viktigaste att tänka på innan man testar sig är…', 5),
+    el('p', { class: 'small soft', text: 'Om du någon gång funderar på det här på riktigt: prata gärna med någon du litar på först.' })));
+
+  // 6 Mitokondrier
+  v.append(el('div', { class: 'card k ' + kc('epi') }, el('h2', { text: 'Visste du?' }),
+    el('p', { text: 'Mitokondrierna har eget DNA, som bara ärvs från den biologiska mamman (s. 211). Eftersom det förs vidare nästan oförändrat genom tusentals generationer kan forskare följa det bakåt. Allt mitokondrie-DNA hos människor som lever i dag kan spåras till en kvinna som levde i Afrika för ungefär 150 000–200 000 år sedan. Hon kallas ibland ”mitokondriella Eva”. Det betyder att alla människor på jorden, åtminstone på ett sätt, är släkt.' })));
+  v.append(el('p', { class: 'sync' }));
+  return v;
+}
+
+
+/* ===== Overrides för Prov 2-sidan ===== */
+const REAL = D.PASSES.filter(p => !p.rep);
+const EXAM = new Date(2026, 10, 20, 8, 20);
+
+function mcBlock(list, key, onDone) {
+  const box = el('div'); let right = 0, n = 0;
+  const msg = el('p', { class: 'msg' });
+  list.forEach(([q, opts, ans, why], i) => {
+    const res = el('div', { class: 'ans', hidden: true });
+    const order = mix(opts.map((_, k) => k));
+    const pool = el('div', { class: 'pool' }, order.map(k => el('button', { text: opts[k], onclick: e => {
+      if (!res.hidden) return; n++;
+      const ok = k === ans; if (ok) right++;
+      e.currentTarget.classList.add(ok ? 'right' : 'wrong');
+      if (!ok) pool.querySelectorAll('button').forEach(b => { if (b.textContent === opts[ans]) b.classList.add('right'); });
+      res.append(el('p', null, el('b', { text: ok ? 'Rätt! ' : 'Inte riktigt. ' }), why)); res.hidden = false;
+      msg.textContent = right + ' rätt av ' + n + (n === list.length ? (right === n ? ' – perfekt! 🎉' : '. Läs förklaringarna till de du missade.') : '');
+      if (n === list.length) { S.ck[key] = right + '/' + n; save(); if (onDone) onDone(); }
+    } })));
+    box.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: (i + 1) + '. ' + q }), pool, res));
+  });
+  if (S.ck[key]) box.prepend(el('p', { class: 'small soft', text: 'Förra gången: ' + S.ck[key] + ' rätt.' }));
+  box.append(msg);
+  return box;
+}
+
+function viewHome() {
+  const v = el('div');
+  v.append(topnav('hem'));
+  const days = Math.max(0, Math.ceil((EXAM - new Date()) / 864e5));
+  const done = D.PASSES.filter(passDone).length;
+  const next = REAL.find(p => !passDone(p) && p.id !== 'p10') || (passDone(D.PASSES.find(p => p.id === 'p11')) ? null : D.PASSES.find(p => p.id === 'p11'));
+  const g = [0, 0, 0]; Object.values(S.q).forEach(r => g[r.s]++);
+  v.append(el('div', { class: 'hero ' + kc('his') },
+    el('h1', { text: 'Prov 2 i genetik' }),
+    el('p', { class: 'soft', text: 'Fredag 20 november kl. 8.20. Läs i boken först och träna sedan här.' }),
+    el('div', { class: 'row' }, el('span', { class: 'big', text: days }), el('span', { text: days === 1 ? 'dag kvar' : 'dagar kvar' })),
+    el('div', { class: 'bar', role: 'img', 'aria-label': done + ' av ' + D.PASSES.length + ' pass klara' }, el('i', { style: 'width:' + Math.round(done / D.PASSES.length * 100) + '%' })),
+    el('div', { class: 'stat' }, el('span', null, el('b', { text: done }), ' av ' + D.PASSES.length + ' pass klara'),
+      el('span', null, el('b', { text: g[0] }), ' frågor kunde'), el('span', null, el('b', { text: g[1] }), ' osäkra'), el('span', null, el('b', { text: g[2] }), ' kunde inte')),
+    next ? el('p', { style: 'margin:.8rem 0 0' }, el('a', { class: 'btn main ' + kc(next.c), href: '#' + next.id }, (done ? 'Fortsätt: ' : 'Börja: ') + 'pass ' + next.n + ', ' + next.t)) : el('p', { text: 'Alla pass är klara. Kör provträningen en gång till!' })));
+  v.append(el('div', { class: 'card' },
+    el('h2', { text: 'Så går ett pass till (cirka 45 minuter)' }),
+    el('ol', null,
+      el('li', null, el('b', { text: 'Minnesstart: ' }), 'frågor från tidigare pass.'),
+      el('li', null, el('b', { text: 'Gissa först: ' }), 'dagens fråga innan du läser.'),
+      el('li', null, el('b', { text: 'Läs i boken: ' }), 'sidan säger vilken bok och vilka sidor.'),
+      el('li', null, el('b', { text: 'Hjärnsläpp: ' }), 'stäng boken, skriv allt du minns och jämför.'),
+      el('li', null, el('b', { text: 'Snabbkoll: ' }), 'flervalsfrågor som rättas direkt.'),
+      el('li', null, el('b', { text: 'Instuderingsfrågor: ' }), 'skriv svaret, titta, markera hur det gick.'),
+      el('li', null, el('b', { text: 'Övningar: ' }), 'bilder, sortera, ordna, korsningsscheman, mutationer.')),
+    el('p', { class: 'small soft', text: '”Lärarens bok” är VIVA-boken som läraren lagt upp. Den har enklare språk och är huvudboken. Campus används där VIVA saknar avsnittet.' })));
+  const list = el('div', { class: 'card' }, el('h2', { text: 'Plan fram till provet' }));
+  let day = '', ul = null;
+  D.PASSES.forEach(p => {
+    if (p.day !== day) { day = p.day; list.append(el('p', { class: 'wk', text: day })); ul = el('ul', { class: 'passlist' }); list.append(ul); }
+    ul.append(el('li', { class: passDone(p) ? 'done' : '' }, el('a', { href: '#' + p.id, class: kc(p.c) },
+      el('span', { class: 'num', text: passDone(p) ? '✓' : p.n }),
+      el('span', null, p.t, el('span', { class: 'meta', text: p.lasa ? p.lasa.map(x => (x[0].startsWith('Lärarens') ? 'VIVA ' : 'Campus ') + x[1]).join(' · ') : 'Repetition' })))));
+  });
+  list.append(el('p', { class: 'small soft', text: 'Onsdag är ledig. Vill han ändå göra något: tio minuter med begreppskorten räcker.' }));
+  v.append(list, el('p', { class: 'sync' }));
+  return v;
+}
+
+function viewPass(p) {
+  const v = el('div', { class: kc(p.c) });
+  v.append(topnav(''));
+  const i = D.PASSES.indexOf(p);
+  v.append(el('div', { class: 'hero ' + kc(p.c) }, el('p', { class: 'soft', style: 'margin:0', text: 'Pass ' + p.n + ' · ' + p.day }), el('h1', { text: p.t })));
+  if (p.rep) v.append(...repSteps(p)); else v.append(...passSteps(p));
+  const dk = 'done-' + p.id;
+  v.append(el('div', { class: 'row', style: 'margin:1rem 0' }, el('button', { class: 'btn main ' + kc(p.c), onclick: () => { S.ck[dk] = !S.ck[dk]; save(); render(); } }, S.ck[dk] ? '✓ Passet är klart (ångra)' : 'Markera passet som klart')));
+  v.append(el('div', { class: 'row' },
+    i > 0 ? el('a', { class: 'btn', href: '#' + D.PASSES[i - 1].id }, '← Pass ' + D.PASSES[i - 1].n) : null,
+    el('a', { class: 'btn', href: '#hem' }, 'Översikt'),
+    i < D.PASSES.length - 1 ? el('a', { class: 'btn', href: '#' + D.PASSES[i + 1].id }, 'Pass ' + D.PASSES[i + 1].n + ' →') : null));
+  v.append(el('p', { class: 'sync' }));
+  return v;
+}
+
+function passSteps(p) {
+  const out = [];
+  const earlier = REAL.filter(x => x.n < p.n && x.id !== 'p10').flatMap(x => passQs(x.id).map(q => q.id));
+  const ms = el('div');
+  const fill = () => {
+    ms.innerHTML = '';
+    if (!earlier.length) { ms.append(el('p', { text: 'Första passet – inget att repetera än. Gå till steg 2.' })); return; }
+    ms.append(el('p', { text: 'Svara i huvudet, titta på svaret och markera hur det gick.' }));
+    pickWeighted(earlier, 4, 2).forEach(id => ms.append(qCard(id, { showFrom: true, write: false })));
+    ms.append(el('button', { class: 'btn', onclick: fill }, 'Andra frågor'));
+  };
+  fill();
+  out.push(stepBox(p.id, 1, 'Minnesstart (5 min)', ms));
+  const gAns = el('div', { class: 'ans', hidden: true }, el('p', { text: p.gissa[1] }));
+  out.push(stepBox(p.id, 2, 'Gissa först (2 min)', el('p', { class: 'qt' }, el('b', { text: p.gissa[0] }), sayBtn(p.gissa[0])),
+    textArea('g-' + p.id, 'Skriv din gissning…', 3), el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: () => { gAns.hidden = !gAns.hidden; } }, 'Visa förklaringen')), gAns));
+  out.push(stepBox(p.id, 3, 'Läs i boken (15–20 min)',
+    el('ul', { class: 'pts' }, p.lasa.map(([bok, sid, vad], k) => el('li', { class: k === 0 ? 'hit' : '' }, el('span', { text: k === 0 ? '📗' : '📘', style: 'flex:none' }), el('span', null, el('b', { text: bok + ', ' + sid + '. ' }), vad)))),
+    el('p', { text: 'Leta efter det här när du läser:' }), el('ul', null, p.guide.map(t => el('li', { text: t })))));
+  const res = el('div', { hidden: true });
+  const ta = textArea('h-' + p.id, 'Skriv allt du minns med egna ord. Stödord går bra.', 6);
+  const showRes = () => {
+    res.innerHTML = ''; const txt = ta.value; let hits = 0; const ul = el('ul', { class: 'pts' });
+    p.punkter.forEach(([t, kws], j) => {
+      const ck = 'hp-' + p.id + '-' + j; const auto = kws.every(k => hasKw(txt, k)); const hit = S.ck[ck] != null ? S.ck[ck] : auto; if (hit) hits++;
+      const li = el('li', { class: hit ? 'hit' : '' }); li.append(el('button', { class: 'mk', 'aria-label': 'Fick med', onclick: () => { S.ck[ck] = !li.classList.contains('hit'); save(); showRes(); } }), el('span', { text: t })); ul.append(li);
+    });
+    res.append(el('p', null, el('b', { text: 'Ungefär ' + hits + ' av ' + p.punkter.length + ' viktiga punkter. ' }), 'Tryck på en ring om du tycker att du fick med punkten.'), ul,
+      el('div', { class: 'row' }, sayBtn(() => p.punkter.map(x => x[0]).join(' '), 'Lyssna'), el('span', { class: 'small soft', text: 'Lyssna på sammanfattningen' })));
+    res.hidden = false;
+  };
+  out.push(stepBox(p.id, 4, 'Hjärnsläpp (5 min)', el('p', { text: 'Stäng boken. Skriv ner allt du minns.' }), ta,
+    el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: showRes }, 'Jämför med sammanfattningen')), res));
+  out.push(stepBox(p.id, 5, 'Snabbkoll (5 min)', el('p', { text: 'Flervalsfrågor i provstil. De rättas direkt.' }), mcBlock(p.mc, 'mc-' + p.id)));
+  const qs = el('div'); passQs(p.id).forEach((x, k) => qs.append(qCard(x.id, { num: k + 1 })));
+  out.push(stepBox(p.id, 6, 'Instuderingsfrågor (10 min)', el('p', { text: 'Svara skriftligt först, som på provet. Gör så många du hinner – resten kommer tillbaka i repetitionen.' }), qs));
+  out.push(stepBox(p.id, 7, 'Övningar (10 min)', el('p', { text: 'Gör minst två.' }), exLinks(p.ovn)));
+  return out;
+}
+
+function allMC() { return REAL.filter(p => p.id !== 'p10').flatMap(p => p.mc || []); }
+
+function repSteps(p) {
+  const out = [];
+  out.push(el('div', { class: 'card' }, el('p', { text: 'Sista passet: blanda allt. Först flervalsfrågor från alla avsnitt, sedan provträning med skrivfrågor. Frågor du haft svårt för kommer oftare.' })));
+  const mcBox = el('div'); const fillMc = () => { mcBox.innerHTML = ''; mcBox.append(mcBlock(mix(allMC()).slice(0, 15), 'mc-rep')); };
+  fillMc();
+  out.push(stepBox(p.id, 1, 'Blandad snabbkoll – 15 frågor', mcBox, el('button', { class: 'btn', onclick: fillMc }, 'Nya frågor')));
+  out.push(stepBox(p.id, 2, 'Provträning med skrivfrågor', el('p', null, el('a', { class: 'btn main ' + kc('rep'), href: '#prov' }, 'Starta provträningen'))));
+  out.push(stepBox(p.id, 3, 'Övningar', exLinks(p.ovn)));
+  out.push(stepBox(p.id, 4, 'Begrepp', el('p', { text: 'Kör begreppskorten med ”Bara de jag inte kan”.' }), el('a', { class: 'btn', href: '#begrepp' }, 'Till begreppen')));
+  return out;
+}
+
+function viewProv() {
+  const v = el('div', { class: kc('rep') });
+  v.append(topnav('prov'));
+  v.append(el('div', { class: 'hero ' + kc('rep') }, el('h1', { text: 'Provträning' }),
+    el('p', { text: 'Del 1: tio flervalsfrågor. Del 2: tio skrivfrågor från hela provområdet. Skriv svaren ordentligt, titta sedan på svaret och var ärlig när du markerar.' })));
+  const mcBox = el('div', { class: 'card' }); mcBox.append(el('h2', { text: 'Del 1: Flerval' }), mcBlock(mix(allMC()).slice(0, 10), 'mc-prov'));
+  const all = Object.keys(Q).filter(id => id.split('-')[0] !== 'p10');
+  const box = el('div', { class: 'card' }, el('h2', { text: 'Del 2: Skrivfrågor' }));
+  const fill = () => { [...box.querySelectorAll('.qc')].forEach(x => x.remove()); pickWeighted(all, 10, 2).forEach((id, k) => box.append(qCard(id, { num: k + 1, showFrom: true }))); };
+  fill();
+  v.append(mcBox, box, el('div', { class: 'row' }, el('button', { class: 'btn', onclick: () => render() }, 'Nytt prov')));
+  return v;
+}
+
+function viewBegrepp() {
+  const v = el('div');
+  v.append(topnav('begrepp'), el('h1', { text: 'Begrepp' }), el('p', { class: 'soft', text: 'Begreppen från klassens lista och böckerna, med korrekta förklaringar.' }));
+  const r = el('details', { class: 'card' }, el('summary', null, el('b', { text: '⚠️ Rättelser till klassens begreppslista (' + D.RATT.length + ' st)' })),
+    el('p', { class: 'small soft', text: 'De här förklaringarna i listan som klassen skrivit stämmer inte. Lär dig den rättade versionen.' }),
+    ...D.RATT.map(([t, fel, ratt]) => el('div', { class: 'term k-epi' }, el('h3', { text: t }), el('p', { class: 'exm', text: 'I listan: ' + fel }), el('p', null, el('b', { text: 'Rätt: ' }), ratt))));
+  v.append(r);
+  const card = el('div', { class: 'card' });
+  const filt = el('div', { class: 'tabs' }), modes = el('div', { class: 'tabs' }), body = el('div');
+  let g = null, mode = 'list';
+  const B = () => D.B.filter(b => !g || b[3] === g);
+  [['Alla', null]].concat(Object.entries(GN).map(([k, n]) => [n, k])).forEach(([n, k]) => filt.append(el('button', { class: k ? kc(k) : '', onclick: () => { g = k; draw(); } }, n)));
+  [['list', 'Läs listan'], ['match', 'Para ihop'], ['guess', 'Gissa begreppet'], ['card', 'Begreppskort']].forEach(([k, n]) => modes.append(el('button', { onclick: () => { mode = k; draw(); } }, n)));
+  const draw = () => {
+    [...filt.children].forEach((b, k) => b.setAttribute('aria-pressed', (k === 0 ? g === null : Object.keys(GN)[k - 1] === g) ? 'true' : 'false'));
+    [...modes.children].forEach((b, k) => b.setAttribute('aria-pressed', ['list', 'match', 'guess', 'card'][k] === mode ? 'true' : 'false'));
+    body.innerHTML = ''; ({ list: bList, match: bMatch, guess: bGuess, card: bCards })[mode](body, B());
+  };
+  card.append(el('p', { class: 'small soft', style: 'margin:0', text: 'Område' }), filt, el('p', { class: 'small soft', style: 'margin:0', text: 'Läge' }), modes, body);
+  v.append(card); draw();
+  return v;
+}
+
+/* ===== Svenska grammatik – vyer och övningar ===== */
+const STEPS = D.PASSES;
+
+function parseTap(s) {
+  return s.split(/(\s+|\n)/).filter(x => x !== '' && x !== ' ').map(tok => {
+    if (tok === '\n') return { br: true };
+    if (/^\s+$/.test(tok)) return null;
+    const t = tok.indexOf('*') >= 0;
+    return { w: tok.replace(/\*/g, ''), t };
+  }).filter(Boolean);
+}
+function tapBlock(text, key, note) {
+  const toks = parseTap(text);
+  const wrap = el('div', { class: 'tapbox' });
+  const line = el('p', { class: 'taps' });
+  const btns = [];
+  toks.forEach(tk => {
+    if (tk.br) { line.append(el('br')); return; }
+    const b = el('button', { class: 'tw', text: tk.w, 'aria-pressed': 'false', onclick: () => { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); b.classList.remove('ok', 'no', 'miss'); } });
+    b._t = tk.t; btns.push(b); line.append(b, ' ');
+  });
+  const msg = el('p', { class: 'msg' });
+  const noteEl = note ? el('div', { class: 'ans', hidden: true, html: note }) : null;
+  const check = () => {
+    let hit = 0, wrong = 0, miss = 0, tot = 0;
+    btns.forEach(b => { const on = b.getAttribute('aria-pressed') === 'true'; b.classList.remove('ok', 'no', 'miss');
+      if (b._t) { tot++; if (on) { hit++; b.classList.add('ok'); } else { miss++; b.classList.add('miss'); } } else if (on) { wrong++; b.classList.add('no'); } });
+    msg.textContent = (hit === tot && !wrong) ? 'Helt rätt! 🎉' : `${hit} av ${tot} rätt. ` + (wrong ? wrong + ' markerade fel (röda). ' : '') + (miss ? miss + ' missade (gula).' : '');
+    if (noteEl) noteEl.hidden = false;
+    if (key && hit === tot && !wrong) { S.ck[key] = 1; save(); }
+  };
+  const show = () => { btns.forEach(b => { b.setAttribute('aria-pressed', b._t ? 'true' : 'false'); b.classList.remove('no', 'miss'); b.classList.toggle('ok', !!b._t); }); msg.textContent = 'Här är svaret.'; if (noteEl) noteEl.hidden = false; };
+  const reset = () => { btns.forEach(b => { b.setAttribute('aria-pressed', 'false'); b.classList.remove('ok', 'no', 'miss'); }); msg.textContent = ''; };
+  wrap.append(line, el('div', { class: 'row' }, el('button', { class: 'btn', onclick: check }, 'Kolla'), el('button', { class: 'btn', onclick: show }, 'Visa svaret'), el('button', { class: 'btn', onclick: reset }, 'Rensa')), msg);
+  if (noteEl) wrap.append(noteEl);
+  return wrap;
+}
+
+function biffBlock(items) {
+  const box = el('div');
+  items.forEach(([s, gap, why, kind], i) => {
+    const toks = s.split(' ');
+    const line = el('p', { class: 'taps' });
+    const res = el('div', { class: 'ans', hidden: true });
+    let done = false;
+    const gaps = [];
+    for (let k = 0; k <= toks.length; k++) {
+      if (k > 0) { const w = el('span', { class: 'tw static', text: toks[k - 1] }); line.append(w); }
+      if (k < toks.length && k > 0) {
+        const g = el('button', { class: 'gap', 'aria-label': 'Sätt inte här', text: '＋', onclick: () => {
+          if (done) return;
+          if (k === gap) { done = true; g.textContent = 'inte'; g.classList.add('ok'); res.innerHTML = ''; res.append(el('p', null, el('b', { text: 'Rätt! ' }), why)); res.hidden = false; }
+          else { g.classList.remove('no'); void g.offsetWidth; g.classList.add('no'); res.innerHTML = ''; res.append(el('p', { text: 'Inte där. Hitta först det finita verbet i ' + (kind === 'h' ? 'huvudsatsen' : 'bisatsen') + '.' })); res.hidden = false; }
+        } });
+        gaps.push(g); line.append(g);
+      }
+    }
+    box.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: (i + 1) + '. Sätt in ”inte” i ' + (kind === 'h' ? 'huvudsatsen' : 'bisatsen') + ':' }), line, res));
+  });
+  return box;
+}
+
+function flyttBlock(items) {
+  const box = el('div');
+  items.forEach(([orig, parts], i) => {
+    const vi = parts.findIndex(p => p[1] === 'V'), si = parts.findIndex(p => p[1].startsWith('subjekt'));
+    const out = el('p', { class: 'flyttout' }); const info = el('p', { class: 'small' });
+    const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+    const build = fi => {
+      const f = parts[fi]; const rest = parts.filter((p, k) => k !== fi && k !== vi && k !== si);
+      const seq = fi === si ? [f, parts[vi], ...rest] : [f, parts[vi], parts[si], ...rest];
+      out.innerHTML = '';
+      seq.forEach((p, k) => {
+        let t = p[0]; if (k === 0) t = cap(t); else if (!p[2] && k > 0) t = t.charAt(0).toLowerCase() + t.slice(1);
+        out.append(el('span', { class: k === 0 ? 'fund' : (p[1] === 'V' ? 'fverb' : ''), text: t }), k < seq.length - 1 ? ' ' : '.');
+      });
+      const before = f[0].split(' ').length, after = seq.slice(2).reduce((a, p) => a + p[0].split(' ').length, 0);
+      info.innerHTML = '';
+      info.append(el('b', { text: 'Fundament: ' }), f[1] + '. ', el('b', { text: fi === si ? 'Rak ordföljd. ' : 'Omvänd ordföljd – subjektet står efter det finita verbet. ' }),
+        before > 3 && before >= after - 1 ? el('b', { text: 'Vänstertung mening!' }) : 'Högertung mening.');
+    };
+    const bs = parts.map((p, k) => (k === vi || p[1] === 'resten') ? null : el('button', { class: 'btn', onclick: () => build(k) }, '”' + p[0] + '” först'));
+    box.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: (i + 1) + '. ' + orig }),
+      el('p', { class: 'small soft', text: 'Det finita verbet ”' + parts[vi][0] + '” sitter fast på plats två. Välj vad som ska stå i fundamentet:' }),
+      el('div', { class: 'row' }, bs), out, info));
+    build(si);
+  });
+  return box;
+}
+
+function sortInline(def, key) {
+  const id = '_' + key; D.SORT[id] = def;
+  const box = el('div'); runSort(box, id, { quiet: true }); return box;
+}
+
+function stepDone(s) { return !!S.ck['done-' + s.id]; }
+
+function viewHome() {
+  const v = el('div');
+  v.append(topnav('hem'));
+  const done = STEPS.filter(stepDone).length;
+  const next = STEPS.find(s => !stepDone(s));
+  const g = [0, 0, 0]; Object.values(S.q).forEach(r => g[r.s]++);
+  v.append(el('div', { class: 'hero ' + kc('his') },
+    el('h1', { text: 'Svenska – grammatik inför omprovet' }),
+    el('p', { class: 'soft', text: 'Gå igenom stegen i ordning. Varje steg tar 30–45 minuter. Sist kommer provträningen, som du kan göra flera gånger.' }),
+    el('div', { class: 'bar', role: 'img', 'aria-label': done + ' av ' + STEPS.length + ' steg klara' }, el('i', { style: 'width:' + Math.round(done / STEPS.length * 100) + '%' })),
+    el('div', { class: 'stat' }, el('span', null, el('b', { text: done }), ' av ' + STEPS.length + ' steg klara'), el('span', null, el('b', { text: g[0] }), ' frågor kunde'), el('span', null, el('b', { text: g[2] }), ' kunde inte')),
+    next ? el('p', { style: 'margin:.8rem 0 0' }, el('a', { class: 'btn main ' + kc(next.c), href: '#' + next.id }, (done ? 'Fortsätt: ' : 'Börja: ') + 'steg ' + next.n + ', ' + next.t)) : el('p', null, el('a', { class: 'btn main ' + kc('rep'), href: '#prov' }, 'Alla steg klara – kör provträningen!'))));
+  v.append(el('div', { class: 'card' }, el('h2', { text: 'Kedjan – så hänger allt ihop' }),
+    el('p', { text: 'Allt bygger på det finita verbet. Lär dig stegen i den här ordningen, och använd dem i samma ordning när du analyserar en text på provet:' }),
+    el('ol', null, ['Hitta de finita verben', 'Räkna satserna (lika många som finita verb)', 'Avgör huvudsats och bisats', 'Ringa in fundamentet (allt före huvudsatsens finita verb)', 'Rak eller omvänd ordföljd?', 'Höger- eller vänstertung?', 'Leta fel: satsradning, fristående bisats, två finita verb'].map(t => el('li', { text: t })))));
+  const list = el('div', { class: 'card' }, el('h2', { text: 'Stegen' }));
+  const ul = el('ul', { class: 'passlist' });
+  STEPS.forEach(s => ul.append(el('li', { class: stepDone(s) ? 'done' : '' }, el('a', { href: '#' + s.id, class: kc(s.c) }, el('span', { class: 'num', text: stepDone(s) ? '✓' : s.n }), el('span', null, s.t, el('span', { class: 'meta', text: s.varfor.split('.')[0] + '.' }))))));
+  ul.append(el('li', null, el('a', { href: '#prov', class: kc('rep') }, el('span', { class: 'num', text: '6' }), el('span', null, 'Provträning: analysera, skriv om och reflektera', el('span', { class: 'meta', text: 'Tre brev i provformat, med facit och checklista.' })))));
+  list.append(ul); v.append(list, el('p', { class: 'sync' }));
+  return v;
+}
+
+function viewPass(s) {
+  const v = el('div', { class: kc(s.c) });
+  v.append(topnav(''));
+  const i = STEPS.indexOf(s);
+  v.append(el('div', { class: 'hero ' + kc(s.c) }, el('p', { class: 'soft', style: 'margin:0', text: 'Steg ' + s.n + ' av 6' }), el('h1', { text: s.t }), el('p', { text: s.varfor })));
+  let n = 0; const st = (title, ...c) => stepBox(s.id, ++n, title, ...c);
+  const earlier = STEPS.filter(x => x.n < s.n).flatMap(x => passQs(x.id).map(q => q.id));
+  if (earlier.length) { const ms = el('div'); pickWeighted(earlier, 3, 2).forEach(id => ms.append(qCard(id, { showFrom: false, write: false }))); v.append(st('Minnesstart', el('p', { text: 'Tre frågor från förra stegen. Svara i huvudet först.' }), ms)); }
+  if (s.fel.length) v.append(st('Det här blev fel i dina anteckningar', el('p', { class: 'small soft', text: 'Helt vanliga förväxlingar. Läs dem noga – det är just sådant som ger avdrag.' }),
+    ...s.fel.map(([du, ratt]) => el('div', { class: 'felbox' }, el('p', { class: 'du' }, el('span', { text: '✘ ' }), du), el('p', { class: 'ratt', html: '✔ ' + ratt })))));
+  v.append(st('Lär dig', ...s.lara.map(([h, t]) => el('div', { class: 'lara' }, el('h3', null, h, ' ', sayBtn(() => h + '. ' + t.replace(/<[^>]+>/g, ' '))), el('p', { html: t })))));
+  (s.tap || []).forEach(([title, sents], k) => v.append(st(title, ...sents.map((x, j) => el('div', { class: 'qc' }, tapBlock(x, 'tap-' + s.id + '-' + k + '-' + j))))));
+  if (s.biff) v.append(st('BIFF-spelet', el('p', { text: 'Tryck på plustecknet där ”inte” ska stå.' }), biffBlock(s.biff)));
+  if (s.flytt) v.append(st('Ordföljdsflyttaren', el('p', { text: 'Välj vad som ska stå först och se vad som händer med ordföljden.' }), flyttBlock(s.flytt)));
+  (s.sort || []).forEach((def, k) => v.append(st('Sortera: ' + def[0], sortInline([def[0], s.c, def[1], def[2]], s.id + k))));
+  v.append(st('Snabbkoll', mcBlock(s.mc, 'mc-' + s.id)));
+  const qs = el('div'); passQs(s.id).forEach((x, k) => qs.append(qCard(x.id, { num: k + 1 })));
+  v.append(st('Skrivfrågor', el('p', { text: 'Skriv svaret med egna ord, som på provet. Titta sedan och markera.' }), qs));
+  const dk = 'done-' + s.id;
+  v.append(el('div', { class: 'row', style: 'margin:1rem 0' }, el('button', { class: 'btn main ' + kc(s.c), onclick: () => { S.ck[dk] = !S.ck[dk]; save(); render(); } }, S.ck[dk] ? '✓ Steget är klart (ångra)' : 'Markera steget som klart')));
+  v.append(el('div', { class: 'row' }, i > 0 ? el('a', { class: 'btn', href: '#' + STEPS[i - 1].id }, '← Steg ' + (i)) : null, el('a', { class: 'btn', href: '#hem' }, 'Översikt'),
+    i < STEPS.length - 1 ? el('a', { class: 'btn', href: '#' + STEPS[i + 1].id }, 'Steg ' + (i + 2) + ' →') : el('a', { class: 'btn', href: '#prov' }, 'Provträning →')));
+  v.append(el('p', { class: 'sync' }));
+  return v;
+}
+
+function viewProv() {
+  const v = el('div', { class: kc('rep') });
+  v.append(topnav('prov'));
+  v.append(el('div', { class: 'hero ' + kc('rep') }, el('h1', { text: 'Provträning' }), el('p', { text: 'Exakt som provet: del 1 analysera, del 2 skriva om, del 3 reflektera. Välj ett brev.' })));
+  const tabs = el('div', { class: 'tabs' }), body = el('div');
+  const show = i => {
+    [...tabs.children].forEach((b, k) => b.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    const L = D.LETTERS[i]; body.innerHTML = '';
+    const plain = L.fin.replace(/\*/g, '');
+    body.append(el('div', { class: 'card brev' }, el('h2', { text: L.t }), ...plain.split('\n').map(l => el('p', { text: l }))));
+    body.append(el('h2', { text: 'Del 1 – Analysera brevet' }));
+    body.append(el('div', { class: 'card' }, el('h3', { style: 'margin-top:0', text: 'a) Tryck på alla finita verb' }), tapBlock(L.fin, 'p-fin-' + L.id, L.finNote)));
+    body.append(el('div', { class: 'card' }, el('h3', { style: 'margin-top:0', text: 'b) Tryck på alla fundament' }), el('p', { class: 'small soft', text: 'Tips: fundamentet är allt före det finita verbet i varje huvudsats. Subjekt i bisatser räknas inte.' }), tapBlock(L.fund, 'p-fund-' + L.id, L.fundNote)));
+    const fq = el('div', { class: 'card' }, el('h3', { style: 'margin-top:0', text: 'c) Svara på frågorna' }));
+    L.facit.forEach(([q, a], k) => {
+      const ans = el('div', { class: 'ans', hidden: true }, el('p', { html: a }));
+      fq.append(el('div', { class: 'qc' }, el('p', { class: 'qt', text: (k + 1) + '. ' + q }), textArea('pf-' + L.id + '-' + k, 'Ditt svar – använd begreppen…', 3),
+        el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: () => { ans.hidden = !ans.hidden; } }, 'Visa facit')), ans));
+    });
+    body.append(fq);
+    body.append(el('h2', { text: 'Del 2 – Skriv om brevet' }));
+    const ta = textArea('pw-' + L.id, 'Skriv din förbättrade version här…', 12);
+    const stats = el('div', { class: 'tip' });
+    const analyze = () => {
+      const t = ta.value.trim(); stats.innerHTML = '';
+      if (!t) { stats.append('Skriv först, så räknar sidan åt dig.'); return; }
+      const sents = t.replace(/\n+/g, ' ').replace(/([.!?])\s+/g, '$1|').split('|').filter(x => x.split(' ').length > 2);
+      const lens = sents.map(x => x.split(/\s+/).length);
+      const subjStart = sents.filter(x => /^(jag|hon|han|vi|de|du|det|den)\b/i.test(x)).length;
+      const inl = ['att', 'eftersom', 'när', 'som', 'vilket', 'medan', 'innan', 'trots att', 'för att', 'så att', 'om', 'där', 'även om', 'fastän', 'sedan'].filter(w => new RegExp('(^|[\\s,])' + w + '\\s', 'i').test(t));
+      const splice = (t.match(/,\s(jag|hon|han|vi|de|du|det|den)\s\w+/gi) || []);
+      stats.append(el('p', null, el('b', { text: sents.length + ' meningar. ' }), 'Kortast ' + Math.min(...lens) + ' ord, längst ' + Math.max(...lens) + ' ord.'),
+        el('p', null, el('b', { text: subjStart + ' av ' + sents.length }), ' meningar börjar med ett pronomen (jag, hon, vi …). ' + (subjStart > sents.length / 2 ? 'Prova att börja fler med ett adverbial eller en bisats!' : 'Bra variation!')),
+        el('p', null, el('b', { text: inl.length + ' olika bisatsinledare: ' }), inl.join(', ') || '–', inl.length < 3 ? '. Använd minst tre olika!' : ' ✔'),
+        splice.length ? el('p', null, el('b', { text: 'Kolla möjlig satsradning: ' }), splice.join(' · ')) : el('p', { text: 'Ingen tydlig satsradning hittad ✔ (kolla ändå själv).' }));
+    };
+    const ck = el('ul', { class: 'pts' }, D.CHECK.map((c, k) => { const key = 'pc-' + L.id + '-' + k; const li = el('li', { class: S.ck[key] ? 'hit' : '' }); li.append(el('button', { class: 'mk', 'aria-label': 'Klar', onclick: () => { S.ck[key] = !S.ck[key]; save(); li.classList.toggle('hit', !!S.ck[key]); } }), el('span', { text: c })); return li; }));
+    const mod = el('div', { class: 'ans', hidden: true }, ...L.modell.split('\n').map(l => el('p', { text: l || ' ' })));
+    body.append(el('div', { class: 'card' }, el('p', { text: 'Ändra fritt, men innehållet ska gå att känna igen. Bocka av checklistan när du är klar.' }), ta,
+      el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: analyze }, 'Räkna på min text'), el('button', { class: 'btn', onclick: () => { mod.hidden = !mod.hidden; } }, 'Visa ett exempel')), stats, el('h3', { text: 'Checklista' }), ck, mod));
+    body.append(el('h2', { text: 'Del 3 – Reflektera' }));
+    const rm = el('div', { class: 'ans', hidden: true }, ...L.refl.map(r => el('p', { html: r })));
+    body.append(el('div', { class: 'card' }, el('p', { text: 'Välj tre meningar du är nöjd med. Förklara vad du har gjort med grammatiska begrepp.' }),
+      el('p', { class: 'small soft', text: 'Meningsstartare – kopiera och fyll i:' }), el('ul', null, D.STARTERS.map(t => el('li', { text: t }))),
+      textArea('pr-' + L.id, 'Mening 1: … Jag har …', 8), el('div', { class: 'row', style: 'margin-top:.4rem' }, el('button', { class: 'btn', onclick: () => { rm.hidden = !rm.hidden; } }, 'Visa exempel på reflektion')), rm));
+  };
+  D.LETTERS.forEach((L, i) => tabs.append(el('button', { onclick: () => show(i) }, L.t.split(':')[0])));
+  v.append(tabs, body); show(0);
+  return v;
+}
+
+function viewBegrepp() {
+  const v = el('div');
+  v.append(topnav('begrepp'), el('h1', { text: 'Begrepp' }), el('p', { class: 'soft', text: 'Alla begrepp som kan komma på provet.' }));
+  const card = el('div', { class: 'card' });
+  const filt = el('div', { class: 'tabs' }), modes = el('div', { class: 'tabs' }), body = el('div');
+  let g = null, mode = 'list';
+  const B = () => D.B.filter(b => !g || b[3] === g);
+  [['Alla', null]].concat(Object.entries(GN).map(([k, n]) => [n, k])).forEach(([n, k]) => filt.append(el('button', { class: k ? kc(k) : '', onclick: () => { g = k; draw(); } }, n)));
+  [['list', 'Läs listan'], ['match', 'Para ihop'], ['guess', 'Gissa begreppet'], ['card', 'Begreppskort']].forEach(([k, n]) => modes.append(el('button', { onclick: () => { mode = k; draw(); } }, n)));
+  const draw = () => {
+    [...filt.children].forEach((b, k) => b.setAttribute('aria-pressed', (k === 0 ? g === null : Object.keys(GN)[k - 1] === g) ? 'true' : 'false'));
+    [...modes.children].forEach((b, k) => b.setAttribute('aria-pressed', ['list', 'match', 'guess', 'card'][k] === mode ? 'true' : 'false'));
+    body.innerHTML = ''; ({ list: bList, match: bMatch, guess: bGuess, card: bCards })[mode](body, B());
+  };
+  card.append(el('p', { class: 'small soft', style: 'margin:0', text: 'Område' }), filt, el('p', { class: 'small soft', style: 'margin:0', text: 'Läge' }), modes, body);
+  v.append(card); draw();
+  return v;
+}
+
+render();
+
+</script>
+</body>
+</html>
