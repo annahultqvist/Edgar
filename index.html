@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#F1F0EC;--paper:#FFFFFF;--ink:#1D2B3A;--soft:#5A6878;--line:#DDDAD3;--a:#2F8A5E;--b:#3566B8;--s:#B8467C;--e:#7A5A2E}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161E26;--paper:#1F2933;--ink:#E9EFF4;--soft:#AAB8C5;--line:#33414E;--a:#5CC08F;--b:#7FA6E8;--s:#EB86B6;--e:#D9B27A}}
-:root[data-theme="dark"]{--bg:#161E26;--paper:#1F2933;--ink:#E9EFF4;--soft:#AAB8C5;--line:#33414E;--a:#5CC08F;--b:#7FA6E8;--s:#EB86B6;--e:#D9B27A}
+  --bg:#F1F0EC;--paper:#FFFFFF;--ink:#1D2B3A;--soft:#5A6878;--line:#DDDAD3;--a:#2F8A5E;--b:#3566B8;--s:#B8467C;--e:#7A5A2E;--k:#0F7C74}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161E26;--paper:#1F2933;--ink:#E9EFF4;--soft:#AAB8C5;--line:#33414E;--a:#5CC08F;--b:#7FA6E8;--s:#EB86B6;--e:#D9B27A;--k:#5CC8BE}}
+:root[data-theme="dark"]{--bg:#161E26;--paper:#1F2933;--ink:#E9EFF4;--soft:#AAB8C5;--line:#33414E;--a:#5CC08F;--b:#7FA6E8;--s:#EB86B6;--e:#D9B27A;--k:#5CC8BE}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lexend",Verdana,"Segoe UI",sans-serif;line-height:1.5}
 .wrap{max-width:40rem;margin:0 auto;padding:3rem 1.2rem}
@@ -44,6 +44,12 @@ a.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
     <span class="pct" id="p4">0 %</span>
   </a>
 
+  <a class="card" href="kemi.html" style="--c:var(--k)">
+    <span class="ico" aria-hidden="true">⚗️</span>
+    <span class="txt"><b>Kemi 2 – kap. 2–4</b><span>Reaktionshastighet, kemisk jämvikt, syror och baser, titrering och löslighet</span><br><span class="badge" id="nedrK">Prov onsdag 27/1</span></span>
+    <span class="pct" id="p5">0 %</span>
+  </a>
+
   <a class="card" href="prov2.html" style="--c:var(--a)">
     <span class="ico" aria-hidden="true">🧬</span>
     <span class="txt"><b>Biologi – Prov 2</b><span>Genetik: DNA, celldelning, mutationer och nedärvning</span><br><span class="badge" id="nedr">Prov fredag 20/11</span></span>
@@ -74,6 +80,9 @@ function pct(key, total) {
   } catch (e) { return 0; }
 }
 document.getElementById('p2').textContent = pct('edgar-prov2-v3', 11) + ' %';
+document.getElementById('p5').textContent = pct('edgar-kemi2-v1', 18) + ' %';
+{ const exK = new Date(2027, 0, 27, 8, 0), dK = Math.ceil((exK - new Date()) / 864e5), nK = document.getElementById('nedrK');
+  nK.textContent = dK > 1 ? 'Prov om ' + dK + ' dagar' : dK === 1 ? 'Prov i morgon!' : dK === 0 ? 'Prov idag – lycka till!' : 'Provet är gjort'; }
 document.getElementById('p4').textContent = pct('edgar-evo-v1', 11) + ' %';
 { const ex3 = new Date(2026, 11, 11, 8, 0), d3 = Math.ceil((ex3 - new Date()) / 864e5), n3 = document.getElementById('nedr3');
   n3.textContent = d3 > 1 ? 'Prov om ' + d3 + ' dagar' : d3 === 1 ? 'Prov i morgon!' : d3 === 0 ? 'Prov idag – lycka till!' : 'Provet är gjort'; }
